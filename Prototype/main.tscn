@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://main.gd" id="1_1x6nv"]
 [ext_resource type="PackedScene" uid="uid://dfo3jbhr20tlg" path="res://player.tscn" id="1_lso3v"]
 [ext_resource type="PackedScene" uid="uid://bvie3lslvpipe" path="res://mob.tscn" id="2_cpany"]
-[ext_resource type="PackedScene" uid="uid://cfhdc35fkudl6" path="res://carrot.tscn" id="3_h72oc"]
-[ext_resource type="PackedScene" uid="uid://s5inkg250mvt" path="res://hud.tscn" id="4_g3l0y"]
+[ext_resource type="PackedScene" path="res://carrot.tscn" id="3_h72oc"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="4_g3l0y"]
 [ext_resource type="AudioStream" uid="uid://cmbsfrqmbyw87" path="res://art/gameover.wav" id="5_4w2vr"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_4pip1"]
