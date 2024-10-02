@@ -14,6 +14,12 @@ config/name="MVP"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=512
+window/size/viewport_height=288
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="MVP"
