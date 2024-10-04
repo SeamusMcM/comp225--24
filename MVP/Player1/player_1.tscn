@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://gl671gp8c20"]
+
+[ext_resource type="Script" path="res://Player1/p1scrpt.gd" id="1_1k2cn"]
+[ext_resource type="Texture2D" uid="uid://eyuihohh2uh8" path="res://Art/Arrow-1.png" id="2_opls3"]
+[ext_resource type="Texture2D" uid="uid://3s8m0o2gj0d2" path="res://Art/Question-1.png" id="3_hwby0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pse2a"]
+size = Vector2(9, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_385jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_opls3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hwby0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player1" type="Area2D"]
+script = ExtResource("1_1k2cn")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_pse2a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_385jb")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
