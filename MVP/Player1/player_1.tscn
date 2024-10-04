@@ -22,6 +22,7 @@ animations = [{
 }]
 
 [node name="Player1" type="Area2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_1k2cn")
 metadata/_edit_group_ = true
 

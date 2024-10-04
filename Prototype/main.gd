@@ -4,6 +4,9 @@ extends Node
 @export var carrot_scene: PackedScene
 var score
 var time = 0
+var difficulty_level = 1
+var velocity = Vector2(-250, 0.0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +27,7 @@ func game_over() -> void:
 	$DeathSound.play()
 
 func new_game():
+	time = 0
 	score = "Time: 0"
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -38,6 +42,22 @@ func _on_score_timer_timeout() -> void:
 	score = "Time: " + str(time)
 	$HUD.update_score(score)
 	$HUD.update_points("Points: " + str($Player.get_points()))
+	
+	if time%30 == 0 :
+		update_difficulty()
+#change the difficulty of the game based on time	
+#func _on_difficulty_timer_timeout() 	-> void:
+	#difficulty_level += 1
+	#update_difficulty_display()
+	
+func update_difficulty() -> void:
+	difficulty_level += 1
+	adjust_mod_speed()
+	$HUD.show_difficulty(difficulty_level)
+		
+func adjust_mod_speed() -> void:
+	velocity -= Vector2(difficulty_level,0)
+		
 
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
@@ -63,8 +83,8 @@ func _on_mob_timer_timeout() -> void:
 	#mob.rotation = direction
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(250, 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
+	#mob.linear_velocity = velocity.rotated(direction)
+	mob.linear_velocity = velocity
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
