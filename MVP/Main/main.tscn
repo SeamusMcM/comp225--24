@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtsmq8neipb6l"]
+
+[ext_resource type="Script" path="res://Main/main.gd" id="1_h7gr7"]
+[ext_resource type="PackedScene" uid="uid://bv7bidph2442s" path="res://Obstacle/obstacle.tscn" id="2_eiky4"]
+[ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player1/player_1.tscn" id="3_ro2yl"]
+[ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player2/player_2.tscn" id="4_ehqpy"]
+
+[sub_resource type="Curve2D" id="Curve2D_gicdn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1080, 0, 0, 0, 0, 0, 1080, 720)
+}
+point_count = 2
+
+[node name="Node" type="Node"]
+script = ExtResource("1_h7gr7")
+obstacle_scene = ExtResource("2_eiky4")
+
+[node name="Player1" parent="." instance=ExtResource("3_ro2yl")]
+
+[node name="Player2" parent="." instance=ExtResource("4_ehqpy")]
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="TimeTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition1" type="Marker2D" parent="."]
+position = Vector2(50, 240)
+
+[node name="StartPosition2" type="Marker2D" parent="."]
+position = Vector2(50, 480)
+
+[node name="ObstaclePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gicdn")
+
+[node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
+position = Vector2(1080, 0)
+rotation = 1.5708
+
+[connection signal="hit" from="Player1" to="." method="p1_game_over"]
+[connection signal="hit" from="Player2" to="." method="p2_game_over"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

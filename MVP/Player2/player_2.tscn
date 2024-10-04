@@ -32,5 +32,7 @@ shape = SubResource("RectangleShape2D_pse2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_385jb")
+frame = 1
+frame_progress = 0.321955
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
