@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://gl671gp8c20"]
 
-[ext_resource type="Script" path="res://Player1/p1scrpt.gd" id="1_1k2cn"]
+[ext_resource type="Script" path="res://Player2/p2scrpt.gd" id="1_lngco"]
 [ext_resource type="Texture2D" uid="uid://eyuihohh2uh8" path="res://Art/Arrow-1.png" id="2_opls3"]
 [ext_resource type="Texture2D" uid="uid://3s8m0o2gj0d2" path="res://Art/Question-1.png" id="3_hwby0"]
 
@@ -21,9 +21,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player1" type="Area2D"]
+[node name="Player2" type="Area2D"]
 scale = Vector2(3, 3)
-script = ExtResource("1_1k2cn")
+script = ExtResource("1_lngco")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
