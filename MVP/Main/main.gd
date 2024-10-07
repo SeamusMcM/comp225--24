@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func p1_game_over() -> void:
+func p3_game_over() -> void:
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 
@@ -24,7 +24,7 @@ func p2_game_over() -> void:
 
 func new_game():
 	time = 0
-	$Player1.start($StartPosition1.position)
+	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
 	$StartTimer.start()
 

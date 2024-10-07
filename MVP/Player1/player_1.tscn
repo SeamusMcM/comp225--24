@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://gl671gp8c20"]
 
 [ext_resource type="Script" path="res://Player1/p1scrpt.gd" id="1_1k2cn"]
-[ext_resource type="Texture2D" uid="uid://mspxc8etsjxb" path="res://Art/sheep1.png" id="2_du3tf"]
-[ext_resource type="Texture2D" uid="uid://c3nku7v3vnii3" path="res://Art/sheep2.png" id="3_sw57t"]
+[ext_resource type="Texture2D" uid="uid://mccb12r0hwwd" path="res://Art/HorseOne.png" id="2_sp3pb"]
+[ext_resource type="Texture2D" uid="uid://bwi50p5krt56t" path="res://Art/HorseTwo.png" id="3_jd2b8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pse2a"]
 size = Vector2(9, 13)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_385jb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_tybtr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_du3tf")
+"texture": ExtResource("2_sp3pb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_sw57t")
+"texture": ExtResource("3_jd2b8")
 }],
 "loop": true,
 "name": &"default",
@@ -32,6 +32,6 @@ shape = SubResource("RectangleShape2D_pse2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_385jb")
+sprite_frames = SubResource("SpriteFrames_tybtr")
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

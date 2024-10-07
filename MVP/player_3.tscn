@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://h0phad6f6uwg"]
+
+[ext_resource type="Script" path="res://player_3.gd" id="1_plfdv"]
+[ext_resource type="Texture2D" uid="uid://mccb12r0hwwd" path="res://Art/HorseOne.png" id="2_g4ne1"]
+[ext_resource type="Texture2D" uid="uid://bwi50p5krt56t" path="res://Art/HorseTwo.png" id="3_omyhy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gira"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g4ne1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_omyhy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fj1a"]
+size = Vector2(31, 12)
+
+[node name="Player3" type="Area2D"]
+script = ExtResource("1_plfdv")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_8gira")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_3fj1a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
