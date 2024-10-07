@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfo3jbhr20tlg"]
+[gd_scene load_steps=8 format=3 uid="uid://c6wax176fhe6n"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_tvsjl"]
-[ext_resource type="Texture2D" uid="uid://cl8kwxtlek4a5" path="res://art/HorseOne.png" id="2_aalwt"]
-[ext_resource type="Texture2D" uid="uid://blx5xf8kwmb0g" path="res://art/HorseTwo.png" id="3_5yjic"]
+[ext_resource type="Texture2D" uid="uid://dxno8xqvr12qq" path="res://art/playerGrey_up1.png" id="1_2a7av"]
+[ext_resource type="Script" path="res://player.gd" id="1_xvuya"]
+[ext_resource type="Texture2D" uid="uid://7ooqnqbwl3yd" path="res://art/playerGrey_up2.png" id="2_s2tsw"]
+[ext_resource type="Texture2D" uid="uid://gn1jqonkmy3b" path="res://art/playerGrey_walk1.png" id="3_si4kw"]
+[ext_resource type="Texture2D" uid="uid://buv4jiue1suva" path="res://art/playerGrey_walk2.png" id="4_3xrwb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ube57"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecds0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aalwt")
+"texture": ExtResource("1_2a7av")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5yjic")
+"texture": ExtResource("2_s2tsw")
 }],
 "loop": true,
 "name": &"up",
@@ -19,30 +21,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aalwt")
+"texture": ExtResource("3_si4kw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5yjic")
+"texture": ExtResource("4_3xrwb")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqn83"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_druus"]
 radius = 27.0
 height = 70.0
 
-[node name="Player" type="Area2D"]
-script = ExtResource("1_tvsjl")
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+script = ExtResource("1_xvuya")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_ube57")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ecds0")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_oqn83")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_druus")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
