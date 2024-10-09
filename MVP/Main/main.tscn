@@ -30,9 +30,6 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
-[node name="FoodTimer" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="StartPosition1" type="Marker2D" parent="."]
 position = Vector2(50, 240)
 
