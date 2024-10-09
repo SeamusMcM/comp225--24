@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Main/main.gd" id="1_h7gr7"]
 [ext_resource type="PackedScene" uid="uid://bv7bidph2442s" path="res://Obstacle/obstacle.tscn" id="2_eiky4"]
 [ext_resource type="PackedScene" uid="uid://h0phad6f6uwg" path="res://player_3.tscn" id="4_byg3o"]
-[ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player2/player_2.tscn" id="4_ehqpy"]
+[ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player1/player_1.tscn" id="4_ehqpy"]
 
 [sub_resource type="Curve2D" id="Curve2D_gicdn"]
 _data = {
