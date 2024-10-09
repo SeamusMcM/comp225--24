@@ -19,19 +19,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fj1a"]
-size = Vector2(31, 12)
+size = Vector2(31, 13.0909)
 
 [node name="Player3" type="Area2D"]
+z_index = 1
 script = ExtResource("1_plfdv")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
+scale = Vector2(2.75, 2.75)
 sprite_frames = SubResource("SpriteFrames_8gira")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4)
-scale = Vector2(3, 3)
+position = Vector2(-0.5, 11)
+scale = Vector2(2.75, 2.75)
 shape = SubResource("RectangleShape2D_3fj1a")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

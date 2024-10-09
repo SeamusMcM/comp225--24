@@ -1,24 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv7bidph2442s"]
+[gd_scene load_steps=4 format=3 uid="uid://bv7bidph2442s"]
 
-[ext_resource type="Texture2D" uid="uid://3s8m0o2gj0d2" path="res://Art/Question-1.png" id="1_j4b03"]
 [ext_resource type="Script" path="res://Obstacle/obstacle.gd" id="1_q0m61"]
+[ext_resource type="Texture2D" uid="uid://dvogfopswggek" path="res://Art/tree.png" id="2_nqnla"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2pde0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_j4b03")
+"texture": ExtResource("2_nqnla")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bowhv"]
-size = Vector2(9.33333, 14.3333)
-
 [node name="RigidBody2D" type="RigidBody2D"]
-collision_mask = 0
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_q0m61")
 metadata/_edit_group_ = true
@@ -27,12 +24,10 @@ metadata/_edit_group_ = true
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2pde0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.333333, 0.5)
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_bowhv")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(3, 3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, 48, -3, 37, -4, 24, -33, 10, -34, -17, -11, -39, 23, -38, 46, -12, 44, 8, 14, 25, 15, 35, 28, 48)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
