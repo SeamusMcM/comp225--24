@@ -1,3 +1,65 @@
-[gd_scene format=3 uid="uid://b1yn00hk8vybx"]
+[gd_scene load_steps=2 format=3 uid="uid://b1yn00hk8vybx"]
+
+[ext_resource type="FontFile" uid="uid://c3g3vj50hymg1" path="res://Fonts/Minecraft.ttf" id="1_trgib"]
 
 [node name="HUD" type="CanvasLayer"]
+
+[node name="P1ScoreLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 64
+text = "P1: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="P2ScoreLabel" type="Label" parent="."]
+offset_right = 152.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 64
+text = "P2: 0"
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -32.0
+offset_right = 540.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 64
+text = "BARNYARD BLITZ"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
