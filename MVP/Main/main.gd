@@ -7,7 +7,8 @@ var newestObjects = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	new_game()
+	#new_game()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,15 +17,22 @@ func _process(delta: float) -> void:
 
 
 func p3_game_over() -> void:
+	#if p3score < p2score:
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
+	$HUD.show_game_over()
+	#sit on victory screen until they click?
+	
 
 
 func p2_game_over() -> void:
+	#if p2score < p3score
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
+	$HUD.show_game_over()
+	#sit on victory screen until they click?
 
 func new_game():
 	time = 0
