@@ -26,6 +26,15 @@ func update_score(score):
 
 func _on_start_button_pressed():
 	$StartButton.hide()
+	show_message("Get Ready!")
+	await get_tree().create_timer(0.5).timeout
+	show_message("3")
+	await get_tree().create_timer(1.0).timeout
+	show_message("2")
+	await get_tree().create_timer(1.0).timeout
+	show_message("1")
+	await get_tree().create_timer(1.0).timeout
+	show_message("Go!")
 	start_game.emit()
 
 func _on_message_timer_timeout():

@@ -28,6 +28,7 @@ func p2_game_over() -> void:
 
 func new_game():
 	time = 0
+	#$HUD.update_score(score)
 	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
 	$StartTimer.start()

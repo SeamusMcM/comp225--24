@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtsmq8neipb6l"]
+[gd_scene load_steps=8 format=3 uid="uid://dtsmq8neipb6l"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_h7gr7"]
 [ext_resource type="PackedScene" uid="uid://bv7bidph2442s" path="res://Obstacle/obstacle.tscn" id="2_eiky4"]
 [ext_resource type="PackedScene" uid="uid://281hhce0ygg6" path="res://Food/food.tscn" id="3_dk6le"]
 [ext_resource type="PackedScene" uid="uid://h0phad6f6uwg" path="res://player_3.tscn" id="4_byg3o"]
 [ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player2/player_2.tscn" id="4_ehqpy"]
+[ext_resource type="PackedScene" uid="uid://b1yn00hk8vybx" path="res://HUD/hud.tscn" id="5_kp5l3"]
 
 [sub_resource type="Curve2D" id="Curve2D_gicdn"]
 _data = {
@@ -48,9 +49,12 @@ curve = SubResource("Curve2D_gicdn")
 position = Vector2(1080, 0)
 rotation = 1.5708
 
+[node name="HUD" parent="." instance=ExtResource("5_kp5l3")]
+
 [connection signal="hit" from="Player2" to="." method="p2_game_over"]
 [connection signal="hit" from="Player3" to="." method="p3_game_over"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
