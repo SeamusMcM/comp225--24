@@ -3,7 +3,7 @@ signal hit
 
 @export var speed = 400 #player speed (pxl/sec) 
 var screen_size #size of game window
-
+var p3_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,7 +50,18 @@ func start(pos):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+	#hide() # Player disappears after being hit.
+	#hit.emit()
+	## Must be deferred as we can't change physics properties on a physics callback.
+	#$CollisionShape2D.set_deferred("disabled", true)
+	
+	if body.get_nombre() == "food":
+		p3_score += 100
+		body.queue_free()
+		print("p3 score" + str(p3_score))
+	else:
+		hide() # Player disappears after being hit.
+		hit.emit()
+		# Must be deferred as we can't change physics properties on a physics callback.
+		$CollisionShape2D.set_deferred("disabled", true)
+		print("tree")

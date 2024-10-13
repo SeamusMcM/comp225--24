@@ -67,7 +67,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.get_nombre() == "food":
 		p2_score += 100
 		body.queue_free()
-		print(p2_score)
+		print("p2 score" + str(p2_score))
 	else:
 		hide() # Player disappears after being hit.
 		hit.emit()
