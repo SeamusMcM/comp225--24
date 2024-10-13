@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	UV.x += TIME*0.285;
+	UV.x += TIME*0.29;
 }
 
 void fragment() {
