@@ -26,7 +26,7 @@ func _process(delta):
 	if Input.is_action_pressed("p2_up"):
 		velocity.y -= 1
 
-	if velocity.length() > 0:
+	if velocity.length() > -1:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
 	else:
