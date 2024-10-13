@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtsmq8neipb6l"]
+[gd_scene load_steps=9 format=3 uid="uid://dtsmq8neipb6l"]
 
-[ext_resource type="Script" path="res://Main/main.gd" id="1_h7gr7"]
+[ext_resource type="Script" path="res://Food/main.gd" id="1_h7gr7"]
 [ext_resource type="PackedScene" uid="uid://bv7bidph2442s" path="res://Obstacle/obstacle.tscn" id="2_eiky4"]
-[ext_resource type="PackedScene" uid="uid://281hhce0ygg6" path="res://Food/food.tscn" id="3_dk6le"]
 [ext_resource type="PackedScene" uid="uid://h0phad6f6uwg" path="res://player_3.tscn" id="4_byg3o"]
 [ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player2/player_2.tscn" id="4_ehqpy"]
-[ext_resource type="PackedScene" uid="uid://b1yn00hk8vybx" path="res://HUD/hud.tscn" id="5_kp5l3"]
+[ext_resource type="Texture2D" uid="uid://ckg4fkaq8pxid" path="res://grass.png" id="5_hvatu"]
+[ext_resource type="Shader" path="res://Main/scroll.gdshader" id="6_07nh5"]
 
 [sub_resource type="Curve2D" id="Curve2D_gicdn"]
 _data = {
@@ -13,10 +13,12 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tu6q"]
+shader = ExtResource("6_07nh5")
+
 [node name="Main" type="Node"]
 script = ExtResource("1_h7gr7")
 obstacle_scene = ExtResource("2_eiky4")
-food_scene = ExtResource("3_dk6le")
 
 [node name="Player1" parent="." instance=ExtResource("4_ehqpy")]
 
@@ -33,9 +35,6 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
-[node name="FoodTimer" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="StartPosition1" type="Marker2D" parent="."]
 position = Vector2(50, 240)
 
@@ -49,12 +48,30 @@ curve = SubResource("Curve2D_gicdn")
 position = Vector2(1080, 0)
 rotation = 1.5708
 
-[node name="HUD" parent="." instance=ExtResource("5_kp5l3")]
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Layer1" type="ParallaxLayer" parent="Background"]
+
+[node name="Layer1Image1" type="Sprite2D" parent="Background/Layer1"]
+position = Vector2(2555, 2501)
+scale = Vector2(7.071, 1.5)
+texture = ExtResource("5_hvatu")
+region_rect = Rect2(100, 100, 0, 0)
+
+[node name="Layer1Image2" type="Sprite2D" parent="Background/Layer1"]
+position = Vector2(5761, 1497)
+scale = Vector2(7, 1.5)
+texture = ExtResource("5_hvatu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0tu6q")
+offset_right = 1150.0
+offset_bottom = 793.0
+texture = ExtResource("5_hvatu")
 
 [connection signal="hit" from="Player2" to="." method="p2_game_over"]
 [connection signal="hit" from="Player3" to="." method="p3_game_over"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
