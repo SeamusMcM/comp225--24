@@ -9,13 +9,11 @@ func show_message(text):
 	$MessageTimer.start()
 
 func show_game_over():
+	#$LoadScreen.show()
 	#add logic here for which player has highest score? TODO
 	show_message("Game Over")
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
-
-	$Message.text = "Lets Race!"
-	$Message.show()
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()

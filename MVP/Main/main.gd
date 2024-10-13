@@ -16,23 +16,31 @@ func _process(delta: float) -> void:
 	pass
 
 
+#---------------------------
 func p3_game_over() -> void:
-	#if p3score < p2score:
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
 	$HUD.show_game_over()
-	#sit on victory screen until they click?
 	
-
-
 func p2_game_over() -> void:
-	#if p2score < p3score
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
 	$HUD.show_game_over()
-	#sit on victory screen until they click?
+#-------------------------
+
+func _game_over() -> void:
+	#rather than hiding every sprite - cover them with the load screen background?
+	$Player2.visible = false
+	$Player3.visible = false 	#add some logic so only one of these need be called?
+	#TODO make all the obsacles and food disapear 
+	
+	$TimeTimer.stop()
+	$ObstacleTimer.stop()
+	$FoodTimer.stop()
+	$HUD.show_game_over()
+	pass
 
 func new_game():
 	time = 0
@@ -59,6 +67,9 @@ func _on_obstacle_timer_timeout() -> void:
 	# Choose the velocity for the mob.
 	var velocity = Vector2(150.0, 0.0)
 	obstacle.linear_velocity = velocity.rotated(direction)
+
+	# Add to group so sprites can tell what they run into (food/obstacle)
+	#obstacle.add_to_group("obstacle")
 
 	# Spawn the mob by adding it to the Main scene.
 	newestObjects.append(obstacle.position.y)
@@ -112,3 +123,7 @@ func _on_food_timer_timeout() -> void:
 	carrot.linear_velocity = velocity.rotated(direction)
 	
 	add_child(carrot)
+
+
+func game() -> void:
+	pass # Replace with function body.

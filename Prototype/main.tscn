@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://bpg0m46s7ptma"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1x6nv"]
-[ext_resource type="PackedScene" uid="uid://dfo3jbhr20tlg" path="res://player.tscn" id="1_lso3v"]
-[ext_resource type="PackedScene" uid="uid://bvie3lslvpipe" path="res://mob.tscn" id="2_cpany"]
+[ext_resource type="PackedScene" uid="uid://c6wax176fhe6n" path="res://player.tscn" id="1_lso3v"]
+[ext_resource type="PackedScene" uid="uid://ciq44grobtfm3" path="res://mob.tscn" id="2_cpany"]
 [ext_resource type="PackedScene" uid="uid://cfhdc35fkudl6" path="res://carrot.tscn" id="3_h72oc"]
 [ext_resource type="PackedScene" uid="uid://s5inkg250mvt" path="res://hud.tscn" id="4_g3l0y"]
 [ext_resource type="AudioStream" uid="uid://cmbsfrqmbyw87" path="res://art/gameover.wav" id="5_4w2vr"]
@@ -68,7 +68,6 @@ curve = SubResource("Curve2D_tj1ki")
 position = Vector2(1080, 0)
 rotation = 1.5708
 
-[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
