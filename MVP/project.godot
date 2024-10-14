@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalAudioStreamPlayer="*res://audio_stream_player.tscn"
+GlobalAudioStreamPlayer="res://audio/audio_stream_player.tscn"
+AudioController="*res://audio/audio_controller.tscn"
 
 [display]
 

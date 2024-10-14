@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6tfx0al5x7p5"
+path="res://.godot/imported/Horse and Carriage.mp3-60bf2d644b53abdc4378c533cbe1b7d3.mp3str"
+
+[deps]
+
+source_file="res://audio/Horse and Carriage.mp3"
+dest_files=["res://.godot/imported/Horse and Carriage.mp3-60bf2d644b53abdc4378c533cbe1b7d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

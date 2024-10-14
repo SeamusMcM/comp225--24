@@ -57,6 +57,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body.get_nombre() == "food":
 		p3_score += 100
+		AudioController.play_horse_pedaling()
+		
 		body.queue_free()
 		print("p3 score" + str(p3_score))
 	else:

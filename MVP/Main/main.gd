@@ -40,6 +40,7 @@ func _game_over() -> void:
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
 	$HUD.show_game_over()
+	AudioController.play_end_level()
 	pass
 
 func new_game():
@@ -47,8 +48,10 @@ func new_game():
 	#$HUD.update_score(score)
 	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
+	AudioController.play_music()
 	$StartTimer.start()
-
+	
+	
 
 func _on_obstacle_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.

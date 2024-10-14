@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cw0gvotnvjnjl"
+path="res://.godot/imported/Horse Neigh-SoundBible.com-1740540960.mp3-4c9cd44f0d200b981b0c14fb776763a0.mp3str"
+
+[deps]
+
+source_file="res://audio/Horse Neigh-SoundBible.com-1740540960.mp3"
+dest_files=["res://.godot/imported/Horse Neigh-SoundBible.com-1740540960.mp3-4c9cd44f0d200b981b0c14fb776763a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
