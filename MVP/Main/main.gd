@@ -4,6 +4,7 @@ extends Node
 @export var food_scene: PackedScene
 var time
 var newestObjects = []
+var difficulty_level = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +47,8 @@ func _game_over() -> void:
 func new_game():
 	time = 0
 	#$HUD.update_score(score)
+	difficulty_level = 1
+	$ObstacleTimer.wait_time = 3.0
 	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
 	AudioController.play_music()
@@ -68,7 +71,9 @@ func _on_obstacle_timer_timeout() -> void:
 	obstacle.position = obstacle_spawn_location.position
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(150.0, 0.0)
+	#var velocity = Vector2(150.0, 0.0)
+	var base_velocity = 150
+	var velocity = Vector2(base_velocity + difficulty_level * 20.0, 0.0)
 	obstacle.linear_velocity = velocity.rotated(direction)
 
 	# Add to group so sprites can tell what they run into (food/obstacle)
@@ -83,6 +88,12 @@ func _on_obstacle_timer_timeout() -> void:
 
 func _on_time_timer_timeout() -> void:
 	time += 1
+	if time % 10 == 0:
+		difficulty_level += 1
+		adjust_timers()
+
+func adjust_timers() -> void:
+	$ObstacleTimer.wait_time = max(0.5, $ObstacleTimer.wait_time - 0.1 * difficulty_level)
 
 func _on_start_timer_timeout() -> void:
 	$ObstacleTimer.start()
@@ -122,10 +133,13 @@ func _on_food_timer_timeout() -> void:
 		print("Object y: " + str(newestObjects[-1]))
 		print("Carrot y: " + str(carrot.position.y))
 	
-	var velocity = Vector2(150.0, 0.0)
+	#var velocity = Vector2(150.0, 0.0)
+	var base_velocity = 150
+	var velocity = Vector2(base_velocity + difficulty_level * 20.0, 0.0)
 	carrot.linear_velocity = velocity.rotated(direction)
 	
 	add_child(carrot)
+
 
 
 func game() -> void:
