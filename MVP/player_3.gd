@@ -64,6 +64,6 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		hide() # Player disappears after being hit.
 		hit.emit()
+		print("Horse")
 		# Must be deferred as we can't change physics properties on a physics callback.
 		$CollisionShape2D.set_deferred("disabled", true)
-		print("tree")

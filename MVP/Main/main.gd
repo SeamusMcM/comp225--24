@@ -32,10 +32,15 @@ func p2_game_over() -> void:
 #-------------------------
 
 func _game_over() -> void:
-	#rather than hiding every sprite - cover them with the load screen background?
+
+	# for each thing on screen - remove it 
+	for child in get_children():
+		if child is RigidBody2D:	#check if it is food/obsacle type
+			child.queue_free()		#remove from canvas entirely
+
 	$Player2.visible = false
 	$Player3.visible = false 	#add some logic so only one of these need be called?
-	#TODO make all the obsacles and food disapear 
+
 	
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()

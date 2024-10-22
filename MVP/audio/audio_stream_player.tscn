@@ -1,10 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ifutdw6p0vtd"]
+[gd_scene load_steps=2 format=3 uid="uid://ifutdw6p0vtd"]
 
 [ext_resource type="AudioStream" uid="uid://breo60lk74t4r" path="res://audio/House In a Forest Loop.ogg" id="1_518kq"]
-[ext_resource type="PackedScene" uid="uid://yfqoiffpo1f8" path="res://Player1/audio_stream_playerhorseneigh.tscn" id="2_5mlmh"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_518kq")
 parameters/looping = true
-
-[node name="AudioStreamPlayerhorseneigh" parent="." instance=ExtResource("2_5mlmh")]

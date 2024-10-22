@@ -66,8 +66,8 @@ stretch_mode = 1
 
 [connection signal="hit" from="Player2" to="." method="p2_game_over"]
 [connection signal="hit" from="Player2" to="." method="_game_over"]
-[connection signal="hit" from="Player3" to="." method="p3_game_over"]
 [connection signal="hit" from="Player3" to="." method="_game_over"]
+[connection signal="hit" from="Player3" to="." method="p3_game_over"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
