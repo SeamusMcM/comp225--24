@@ -3,7 +3,6 @@ signal hit
 
 @export var speed = 400 #player speed (pxl/sec) 
 var screen_size #size of game window
-var p3_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,11 +55,9 @@ func _on_body_entered(body: Node2D) -> void:
 	#$CollisionShape2D.set_deferred("disabled", true)
 	
 	if body.get_nombre() == "food":
-		p3_score += 100
 		AudioController.play_horse_pedaling()
-		
 		body.queue_free()
-		print("p3 score" + str(p3_score))
+		GlobalScript._p1_points_earned(int(100))
 	else:
 		hide() # Player disappears after being hit.
 		hit.emit()

@@ -54,6 +54,10 @@ func new_game():
 	#$HUD.update_score(score)
 	difficulty_level = 1
 	$ObstacleTimer.wait_time = 3.0
+	GlobalScript._set_p1_points(0)
+	GlobalScript._set_p2_points(0)
+	GlobalScript._p1_points_earned(0)
+	GlobalScript._p2_points_earned(0)
 	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
 	AudioController.play_music()
@@ -93,12 +97,15 @@ func _on_obstacle_timer_timeout() -> void:
 
 func _on_time_timer_timeout() -> void:
 	time += 1
+	GlobalScript._p1_points_earned(10)
+	GlobalScript._p2_points_earned(10)
 	if time % 10 == 0:
 		difficulty_level += 1
 		adjust_timers()
 
 func adjust_timers() -> void:
 	$ObstacleTimer.wait_time = max(0.5, $ObstacleTimer.wait_time - 0.1 * difficulty_level)
+	#Add code to check if each player is alive before adding time-points
 
 func _on_start_timer_timeout() -> void:
 	$ObstacleTimer.start()

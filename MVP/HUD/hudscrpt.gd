@@ -2,6 +2,16 @@ extends CanvasLayer
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
+#var hud = get_node("res://HUD/hud.tscn")
+#var hud_scene = preload("res://HUD/hud.tscn")
+#var hud = null
+
+func _ready():
+	#hud = hud_scene.instance()
+	#add_child(hud)
+	GlobalScript.connect("p1_points_earned", update_p1score)
+	GlobalScript.connect("p2_points_earned", update_p2score)
+	#GlobalScript.connect("points_earned", hud, "update_p2score")
 
 func show_message(text):
 	$Message.text = text
@@ -18,9 +28,11 @@ func show_game_over():
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
 	
-func update_score(score):
-	$ScoreLabel.text = str(score)
+func update_p1score(score):
+	$P1ScoreLabel.text = "P1: " + str(score)
 
+func update_p2score(score: int):
+	$P2ScoreLabel.text = "P2: " + str(score)
 
 func _on_start_button_pressed():
 	$StartButton.hide()
