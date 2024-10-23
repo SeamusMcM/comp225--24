@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://coeod3e8k2e26"]
 
-[ext_resource type="Script" path="res://audio_controller.gd" id="1_im85c"]
+[ext_resource type="Script" path="res://audio/audio_controller.gd" id="1_im85c"]
 [ext_resource type="AudioStream" uid="uid://breo60lk74t4r" path="res://audio/House In a Forest Loop.ogg" id="2_4dd86"]
 [ext_resource type="AudioStream" uid="uid://djnjhfi7w2e7h" path="res://audio/Bleat-SoundBible.com-893851569.mp3" id="3_femfi"]
 [ext_resource type="AudioStream" uid="uid://bo5fabhw3aqkj" path="res://audio/gameover.wav" id="3_vtton"]

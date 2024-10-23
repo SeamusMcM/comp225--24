@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://h0phad6f6uwg"]
 
-[ext_resource type="Script" path="res://player_3.gd" id="1_plfdv"]
+[ext_resource type="Script" path="res://Player3/player_3.gd" id="1_plfdv"]
 [ext_resource type="Texture2D" uid="uid://mccb12r0hwwd" path="res://Art/HorseOne.png" id="2_g4ne1"]
 [ext_resource type="Texture2D" uid="uid://bwi50p5krt56t" path="res://Art/HorseTwo.png" id="3_omyhy"]
 
