@@ -31,11 +31,6 @@
     <a href="https://github.com/seamusmcm/comp225--24"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/seamusmcm/comp225--24">View Demo</a>
-    ·
-    <a href="https://github.com/seamusmcm/comp225--24/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/seamusmcm/comp225--24/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -74,7 +69,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `seamusmcm`, `comp225--24`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `BARNYARD BLITZ`, `Old MacDonald meets Mario Kart in this hilarious tour de force flash game.`
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,8 +77,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
+* [![Godot][GODOT.js]][GODOT-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -106,20 +101,19 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/seamusmcm/comp225--24.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
-5. Change git remote url to avoid accidental pushes to base project
+4. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin seamusmcm/comp225--24
    git remote -v # confirm the changes
@@ -153,24 +147,7 @@ See the [open issues](https://github.com/seamusmcm/comp225--24/issues) for a ful
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Top contributors:
+### Creators:
 
 <a href="https://github.com/seamusmcm/comp225--24/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=seamusmcm/comp225--24" alt="contrib.rocks image" />
@@ -181,16 +158,19 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- CONTACT -->
-## Contact
+<!-- CONTACTS -->
+## Contacts
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Armando Akapo-Nwagbo - aakaponw@macalester.edu\
+Seamus McMurrer - smcmurre@macalester.edu\
+Avery Sellers - asellers@macalester.edu\
+Baituan Zhou - bzhou@macalester.edu
 
 Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seamusmcm/comp225--24)
 
@@ -201,8 +181,8 @@ Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seam
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
+* GODOT tutorial (https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html)
+* Free Sound Effects (https://soundbible.com/#google_vignette)
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
