@@ -38,9 +38,12 @@ func _on_start_button_pressed():
 	$StartButton.hide()
 	show_message("Get Ready!")
 	
+	
 	await get_tree().create_timer(1.5).timeout
+	
+	
 	show_message("3")
-
+	AudioController.play_countdown()
 	await $MessageTimer.timeout
 	show_message("2")
 	
