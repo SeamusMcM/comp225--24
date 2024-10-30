@@ -17,6 +17,9 @@ point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_la4u4"]
 shader = ExtResource("6_07nh5")
+shader_parameter/difficulty = 1
+shader_parameter/newTime = 0
+shader_parameter/startTime = 0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_h7gr7")
@@ -33,6 +36,7 @@ food_scene = ExtResource("3_dk6le")
 wait_time = 0.5
 
 [node name="TimeTimer" type="Timer" parent="."]
+wait_time = 0.01
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -64,10 +68,10 @@ offset_bottom = 722.0
 texture = ExtResource("7_bo4oq")
 stretch_mode = 1
 
-[connection signal="hit" from="Player2" to="." method="_game_over"]
 [connection signal="hit" from="Player2" to="." method="p2_game_over"]
-[connection signal="hit" from="Player3" to="." method="_game_over"]
+[connection signal="hit" from="Player2" to="." method="_game_over"]
 [connection signal="hit" from="Player3" to="." method="p3_game_over"]
+[connection signal="hit" from="Player3" to="." method="_game_over"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
