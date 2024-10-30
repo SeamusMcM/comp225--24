@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://coeod3e8k2e26"]
+[gd_scene load_steps=7 format=3 uid="uid://coeod3e8k2e26"]
 
 [ext_resource type="Script" path="res://audio/audio_controller.gd" id="1_im85c"]
 [ext_resource type="AudioStream" uid="uid://breo60lk74t4r" path="res://audio/House In a Forest Loop.ogg" id="2_4dd86"]
+[ext_resource type="AudioStream" uid="uid://bw6km01ildhs2" path="res://audio/zapsplat_multimedia_game_sound_arcade_racing_game_race_start_tone_organ_001_91581.mp3" id="2_vwmhf"]
 [ext_resource type="AudioStream" uid="uid://djnjhfi7w2e7h" path="res://audio/Bleat-SoundBible.com-893851569.mp3" id="3_femfi"]
 [ext_resource type="AudioStream" uid="uid://bo5fabhw3aqkj" path="res://audio/gameover.wav" id="3_vtton"]
 [ext_resource type="AudioStream" uid="uid://cw0gvotnvjnjl" path="res://audio/Horse Neigh-SoundBible.com-1740540960.mp3" id="4_k14hc"]
@@ -12,6 +13,7 @@ script = ExtResource("1_im85c")
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4dd86")
 volume_db = 3.28
+parameters/looping = true
 
 [node name="bleat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_femfi")
@@ -24,3 +26,7 @@ volume_db = 9.368
 [node name="Horse_pedaling" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_k14hc")
 volume_db = 4.685
+
+[node name="countdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vwmhf")
+volume_db = 13.585
