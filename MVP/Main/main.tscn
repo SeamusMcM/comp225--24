@@ -19,6 +19,9 @@ point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_la4u4"]
 shader = ExtResource("6_07nh5")
+shader_parameter/difficulty = 1
+shader_parameter/newTime = 0
+shader_parameter/startTime = 0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_h7gr7")
