@@ -62,6 +62,7 @@ func new_game():
 	$Player2.start($StartPosition2.position)
 	AudioController.play_music()
 	$StartTimer.start()
+	allObjects.clear()
 	
 	
 
