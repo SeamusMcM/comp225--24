@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckxg4luvbt37t"]
+[gd_scene load_steps=3 format=3 uid="uid://ckxg4luvbt37t"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_7uatq"]
+[ext_resource type="FontFile" uid="uid://c3g3vj50hymg1" path="res://Fonts/Minecraft.ttf" id="2_1i55g"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -27,18 +28,25 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1i55g")
 text = "Start"
 
 [node name="OptionButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_1i55g")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1i55g")
 text = "Quit
 "
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
