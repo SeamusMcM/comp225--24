@@ -49,15 +49,13 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Contacts</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -67,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Barnyard Blitz Screen Shot][product-screenshot]](https://example.com)
 
 
 
@@ -77,8 +75,8 @@
 
 ### Built With
 
-* [![React][React.js]][React-url]
-* [![Godot][GODOT.js]][GODOT-url]
+
+* [![Godot][Godot-url]][Godot.js]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -88,36 +86,21 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+To get a local copy up and running follow these simple steps.
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/seamusmcm/comp225--24.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-4. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin seamusmcm/comp225--24
-   git remote -v # confirm the changes
-   ```
+1. Install [Godot engine](https://godotengine.org/) 
+
+2. Clone [our repo](https://github.com/SeamusMcM/comp225--24)
+[![GitHub Screen Shot][clone-screenshot]](https://github.com/SeamusMcM/comp225--24)
+
+3. Give our project a star
+
+4. Import your cloned repo into Godot engine
+[![Godot Screen Shot][import-gd-sc.png]]()
+
+5. Navigate to and open the `main.tscn` file in the bottom left and hit <kbd>Cmd</kbd> + <kbd>r</kbd> (Mac) or <kbd>F5</kbd> (PC)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -132,19 +115,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/seamusmcm/comp225--24/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ### Creators:
@@ -183,7 +153,7 @@ Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seam
 
 * GODOT tutorial (https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html)
 * Free Sound Effects (https://soundbible.com/#google_vignette)
-* []()
+* README Template (https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -204,6 +174,7 @@ Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seam
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/bybhomescreen.png
+[clone-screenshot]: images/clonesc.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -220,3 +191,6 @@ Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seam
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[Godot-url]: https://img.shields.io/badge/Godot%20Engine-478CBF?logo=godotengine&logoColor=fff&style=flat
+[Godot.js]: https://godotengine.org/
+[import-gd-sc.png]: images/import-gd-sc.png
