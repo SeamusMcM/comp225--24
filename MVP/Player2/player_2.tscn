@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://gl671gp8c20"]
+[gd_scene load_steps=8 format=3 uid="uid://gl671gp8c20"]
 
 [ext_resource type="Script" path="res://Player2/p2scrpt.gd" id="1_lngco"]
 [ext_resource type="Texture2D" uid="uid://mspxc8etsjxb" path="res://Art/sheep1.png" id="2_pcumm"]
 [ext_resource type="Texture2D" uid="uid://c3nku7v3vnii3" path="res://Art/sheep2.png" id="3_j004d"]
+[ext_resource type="Texture2D" uid="uid://d3un1cbfi5s03" path="res://Art/sheepShield1.png" id="4_7ndkn"]
+[ext_resource type="Texture2D" uid="uid://f303601n44ms" path="res://Art/sheepShield2.png" id="5_tegem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pse2a"]
 size = Vector2(15, 9)
@@ -18,6 +20,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7ndkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tegem")
+}],
+"loop": true,
+"name": &"shield",
 "speed": 5.0
 }]
 
@@ -36,4 +49,8 @@ shape = SubResource("RectangleShape2D_pse2a")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_64isq")
 
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

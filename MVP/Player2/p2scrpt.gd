@@ -1,6 +1,7 @@
 extends Area2D
 signal hit
 
+var animation
 
 @export var speed = 400 #player speed (pxl/sec) 
 var screen_size #size of game window
@@ -9,6 +10,7 @@ var screen_size #size of game window
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	animation = "default"
 	$AnimatedSprite2D.flip_h = true
 	hide()
 
@@ -35,7 +37,7 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "default"
+		$AnimatedSprite2D.animation = animation
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = velocity.x > 0
 	# TODO modify this later if end up doign more than 1 direction movement
@@ -67,9 +69,24 @@ func _on_body_entered(body: Node2D) -> void:
 		AudioController.play_bleat()
 		body.queue_free()
 		GlobalScript._p2_points_earned(int(100))
+	elif body.get_nombre() == "shield":
+		body.queue_free()
+		animation = "shield"
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,true)
+		$AnimatedSprite2D.animation = animation
+		print("got the shield")
+		$ShieldTimer.start()
 	else:
 		hide() # Player disappears after being hit.
 		hit.emit()
 		# Must be deferred as we can't change physics properties on a physics callback.
 		$CollisionShape2D.set_deferred("disabled", true)
 		print("tree")
+
+
+func _on_shield_timer_timeout() -> void:
+	animation = "default"
+	$AnimatedSprite2D.animation = animation
+	set_collision_mask_value(1,true)
+	set_collision_mask_value(2,false)

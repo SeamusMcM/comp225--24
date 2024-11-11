@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgbvq8aw07t5w"]
+
+[ext_resource type="Script" path="res://PowerUps/shield.gd" id="1_k6yin"]
+[ext_resource type="Texture2D" uid="uid://crx1fn1bauob0" path="res://Art/ShieldCapsule.png" id="2_jl0e4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mfpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jl0e4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1q4t"]
+radius = 16.0
+height = 48.0
+
+[node name="Shield" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_k6yin")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4mfpf")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_c1q4t")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://h0phad6f6uwg"]
+[gd_scene load_steps=8 format=3 uid="uid://h0phad6f6uwg"]
 
 [ext_resource type="Script" path="res://Player3/player_3.gd" id="1_plfdv"]
 [ext_resource type="Texture2D" uid="uid://mccb12r0hwwd" path="res://Art/HorseOne.png" id="2_g4ne1"]
 [ext_resource type="Texture2D" uid="uid://bwi50p5krt56t" path="res://Art/HorseTwo.png" id="3_omyhy"]
+[ext_resource type="Texture2D" uid="uid://dku10yuwe5gp0" path="res://Art/HorseShieldOne.png" id="4_mv4bm"]
+[ext_resource type="Texture2D" uid="uid://dy1c8xcl7d8vo" path="res://Art/HorseShieldTwo.png" id="5_6jvjq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8gira"]
 animations = [{
@@ -15,6 +17,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mv4bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6jvjq")
+}],
+"loop": true,
+"name": &"shield",
 "speed": 5.0
 }]
 

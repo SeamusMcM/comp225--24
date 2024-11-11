@@ -2,6 +2,8 @@ extends Node
 
 @export var obstacle_scene: PackedScene
 @export var food_scene: PackedScene
+@export var shield_scene: PackedScene
+
 var time
 var newestObjects = []
 var difficulty_level = 1
@@ -22,12 +24,14 @@ func p3_game_over() -> void:
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
+	$PowerUpTimer.stop()
 	$HUD.show_game_over()
 	
 func p2_game_over() -> void:
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
+	$PowerUpTimer.stop()
 	$HUD.show_game_over()
 #-------------------------
 
@@ -45,6 +49,7 @@ func _game_over() -> void:
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	$FoodTimer.stop()
+	$PowerUpTimer.stop()
 	$HUD.show_game_over()
 	AudioController.play_end_level()
 	pass
@@ -111,7 +116,7 @@ func _on_start_timer_timeout() -> void:
 	$ObstacleTimer.start()
 	$TimeTimer.start()
 	$FoodTimer.start()
-
+	$PowerUpTimer.start()
 
 func _on_food_timer_timeout() -> void:
 	var carrot = food_scene.instantiate()
@@ -139,6 +144,8 @@ func _on_food_timer_timeout() -> void:
 	
 	carrot.position = food_spawn_location.position
 	
+	
+	
 	#Check if carrot and obstacle collide
 	if food_spawn_location.position.y >= newestObjects[-1] -15 && food_spawn_location.position.y <= newestObjects[-1] + 100:
 		print("Objects Spawned On Top of Eachother")
@@ -153,6 +160,45 @@ func _on_food_timer_timeout() -> void:
 	add_child(carrot)
 
 
-
 func game() -> void:
 	pass # Replace with function body.
+
+
+func _on_power_up_timer_timeout() -> void:
+	var shield = shield_scene.instantiate()
+	var shield_spawn_location
+	shield_spawn_location = $ObstaclePath/ObstacleSpawnLocation
+	shield_spawn_location.progress_ratio = randf()
+	
+	
+	#Attempt at making the carrots not spawn on top of the other objects
+	var rng = RandomNumberGenerator.new()
+	var my_random_number
+	for i in range(10):
+		my_random_number = rng.randf_range(40, 720.0)
+		var goodNumber = true
+		for num in newestObjects:
+			if my_random_number >= num - 15 && my_random_number <= num + 100:
+				goodNumber = false
+		if goodNumber == true:
+			break
+	
+	shield_spawn_location.position.y = my_random_number
+	
+	
+	var direction = shield_spawn_location.rotation + PI / 2
+	
+	shield.position = shield_spawn_location.position
+	
+	#Check if carrot and obstacle collide
+	if shield_spawn_location.position.y >= newestObjects[-1] -15 && shield_spawn_location.position.y <= newestObjects[-1] + 100:
+		print("Objects Spawned On Top of Eachother")
+		print("Object y: " + str(newestObjects[-1]))
+		print("Carrot y: " + str(shield.position.y))
+	
+	#var velocity = Vector2(150.0, 0.0)
+	var base_velocity = 150
+	var velocity = Vector2(base_velocity * (1+ (GlobalScript._get_diff() * 0.001)), 0.0)
+	shield.linear_velocity = velocity.rotated(direction)
+	
+	add_child(shield)
