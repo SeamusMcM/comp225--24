@@ -12,6 +12,7 @@ var difficulty_level = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalScript.connect("removed", deleteObstacle)
+	print_debug("hello")
 	pass
 
 
