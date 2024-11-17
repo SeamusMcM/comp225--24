@@ -9,10 +9,29 @@ signal start_game
 func _ready():
 	#hud = hud_scene.instance()
 	#add_child(hud)
-	GlobalScript.connect("p1_points_earned", update_p1score)
-	GlobalScript.connect("p2_points_earned", update_p2score)
-	#GlobalScript.connect("points_earned", hud, "update_p2score")
+	var global_script = get_node("/root/GlobalScript")
+	if global_script:
+		global_script.connect("game_over", Callable(self, "_on_game_over"))
+		GlobalScript.connect("p1_points_earned",update_p1score)
+		GlobalScript.connect("p2_points_earned", update_p2score)
+		#GlobalScript.connect("points_earned", hud, "update_p2score")
 
+func _on_game_over():
+	
+	var global_script = get_node("/root/GlobalScript")
+	if global_script:
+		var p1_score=global_script._get_p1_points()
+		var p2_score=global_script._get_p2_points()
+		
+		if p1_score>p2_score:
+			show_message("Player 1 Wins!")
+		elif p1_score<p2_score:
+			show_message("Player 2 Wins!")
+		else:
+			show_message("It's a Tie!")
+	await get_tree().create_timer(3.0).timeout	
+	$StartButton.show()
+	
 func show_message(text):
 	$Message.text = text
 	$Message.show()
@@ -26,10 +45,11 @@ func show_game_over():
 	await $MessageTimer.timeout
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
-	$StartButton.show()
+
 	
 func update_p1score(score):
 	$P1ScoreLabel.text = "P1: " + str(score)
+	
 
 func update_p2score(score: int):
 	$P2ScoreLabel.text = "P2: " + str(score)
@@ -39,6 +59,7 @@ func _on_start_button_pressed():
 	show_message("Get Ready!")
 	
 	await get_tree().create_timer(1.5).timeout
+	AudioController.play_countdown()
 	show_message("3")
 
 	await $MessageTimer.timeout

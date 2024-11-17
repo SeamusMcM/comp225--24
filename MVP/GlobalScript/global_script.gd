@@ -3,11 +3,14 @@ signal p1_points_earned
 signal p2_points_earned
 signal removed
 signal spawn_collision
+signal game_over 
 
 var p1_points
 var p2_points
 
 var diff = 1
+var p1_active=true
+var p2_active=true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,3 +53,15 @@ func _p1_points_earned(added_points: int):
 func _p2_points_earned(added_points: int):
 	p2_points = p2_points + added_points
 	emit_signal("p2_points_earned", p2_points)
+
+func set_player_inactive(player:int):
+	if player==1:
+		p1_active = false
+	elif player==2:
+		p2_active=false
+	check_game_over()
+
+func check_game_over():
+	if not p1_active and not p2_active:
+		emit_signal("game_over")
+	

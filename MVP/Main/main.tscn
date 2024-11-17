@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b1yn00hk8vybx" path="res://HUD/hud.tscn" id="5_kp5l3"]
 [ext_resource type="Shader" path="res://Main/scroll.gdshader" id="6_07nh5"]
 [ext_resource type="Texture2D" uid="uid://c0tw8sud6imcq" path="res://Art/grass.png" id="7_bo4oq"]
-[ext_resource type="PackedScene" uid="uid://djscf225o18e5" path="res://pause_menu.tscn" id="10_xjnt6"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="10_xjnt6"]
 
 [sub_resource type="Curve2D" id="Curve2D_gicdn"]
 _data = {
