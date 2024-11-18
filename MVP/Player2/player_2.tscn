@@ -24,6 +24,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_pcumm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7ndkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j004d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tegem")
+}],
+"loop": true,
+"name": &"losingShield",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_7ndkn")
 }, {
 "duration": 1.0,
@@ -48,9 +65,15 @@ shape = SubResource("RectangleShape2D_pse2a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_64isq")
+animation = &"losingShield"
+autoplay = "default"
 
 [node name="ShieldTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
+
+[node name="LosingShieldTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="LosingShieldTimer" to="." method="_on_losing_shield_timer_timeout"]

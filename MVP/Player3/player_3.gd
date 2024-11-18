@@ -67,10 +67,25 @@ func _on_body_entered(body: Node2D) -> void:
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,true)
 		$AnimatedSprite2D.animation = animation
-		print("got the shield")
+		$ShieldTimer.start()
 	else:
 		hide() # Player disappears after being hit.
 		hit.emit()
 		print("Horse")
 		# Must be deferred as we can't change physics properties on a physics callback.
 		$CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_shield_timer_timeout() -> void:
+	animation = "losingShield"
+	$AnimatedSprite2D.animation = animation
+	$ShieldTimer.stop()
+	$LosingShieldTimer.start()
+
+
+func _on_losing_shield_timer_timeout() -> void:
+	animation = "default"
+	$AnimatedSprite2D.animation = animation
+	set_collision_mask_value(1,true)
+	set_collision_mask_value(2,false)
+	$LosingShieldTimer.stop()

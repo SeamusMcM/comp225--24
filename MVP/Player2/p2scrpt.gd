@@ -11,6 +11,7 @@ var screen_size #size of game window
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	animation = "default"
+	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.flip_h = true
 	hide()
 
@@ -66,6 +67,7 @@ func _on_body_entered(body: Node2D) -> void:
 		#print(p2_score)
 		
 	if body.get_nombre() == "food":
+		print("got food")
 		AudioController.play_bleat()
 		body.queue_free()
 		GlobalScript._p2_points_earned(int(100))
@@ -75,7 +77,6 @@ func _on_body_entered(body: Node2D) -> void:
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,true)
 		$AnimatedSprite2D.animation = animation
-		print("got the shield")
 		$ShieldTimer.start()
 	else:
 		hide() # Player disappears after being hit.
@@ -86,7 +87,15 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_shield_timer_timeout() -> void:
+	animation = "losingShield"
+	$AnimatedSprite2D.animation = animation
+	$ShieldTimer.stop()
+	$LosingShieldTimer.start()
+
+
+func _on_losing_shield_timer_timeout() -> void:
 	animation = "default"
 	$AnimatedSprite2D.animation = animation
 	set_collision_mask_value(1,true)
 	set_collision_mask_value(2,false)
+	$LosingShieldTimer.stop()
