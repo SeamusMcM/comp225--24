@@ -128,7 +128,7 @@ func _on_start_timer_timeout() -> void:
 	$ObstacleTimer.start()
 	$TimeTimer.start()
 	$FoodTimer.start()
-	#$PowerUpTimer.start()
+	$PowerUpTimer.start()
 
 func _on_food_timer_timeout() -> void:
 	var carrot = food_scene.instantiate()
