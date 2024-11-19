@@ -55,11 +55,13 @@ To get a local copy up and running follow these simple steps.
 1. Install [Godot engine.](https://godotengine.org/)
 
 2. Clone [our repo.](https://github.com/SeamusMcM/comp225--24)
+
 [![GitHub Screen Shot][clone-screenshot]](https://github.com/SeamusMcM/comp225--24)
 
 3. Give our project a star.
 
 4. Import your cloned repo into Godot engine and open it.
+
 [![Godot Screen Shot][import-gd-sc.png]]()
 
 5. Navigate to and open the `main.tscn` file in the bottom left and the click <kbd>Cmd</kbd> + <kbd>r</kbd> (Mac) or <kbd>F5</kbd> (PC)
@@ -69,7 +71,7 @@ To get a local copy up and running follow these simple steps.
 <!-- HOW TO PLAY -->
 ## How To Play
 
-## 🐴🐑 **Barnyard Blitz**
+## **Barnyard Blitz**
 
 ### Summary:
 In **_Barnyard Blitz_**, two players race to collect the most carrots while dodging obstacles.  
@@ -78,7 +80,7 @@ In **_Barnyard Blitz_**, two players race to collect the most carrots while dodg
 - Hitting an obstacle ends that player's run, but the other player can continue playing.  
 - The game ends when **both players** have hit an obstacle. <!-- - Be sure to keep an eye out for special items that can help you or hinder your opponent... -->
 - Be sure to keep an eye out for the special shields that can protect you from obstacles!
-- 🏆 **The player with the most points wins!**
+- **The player with the most points wins!**
 
 
 ### Controls:
@@ -95,6 +97,9 @@ In **_Barnyard Blitz_**, two players race to collect the most carrots while dodg
 - **Move Down**: <kbd>↓</kbd>  
 - **Move Right**: <kbd>→</kbd>
 
+
+<!-- ![](https://github.com/Your_Repository_Name/Your_GIF_Name.gif) -->
+![](misc/gameplay.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
