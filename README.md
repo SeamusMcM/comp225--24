@@ -71,8 +71,6 @@ To get a local copy up and running follow these simple steps.
 <!-- HOW TO PLAY -->
 ## How To Play
 
-## **Barnyard Blitz**
-
 ### Summary:
 In **_Barnyard Blitz_**, two players race to collect the most carrots while dodging obstacles.  
 
@@ -98,7 +96,7 @@ In **_Barnyard Blitz_**, two players race to collect the most carrots while dodg
 - **Move Right**: <kbd>→</kbd>
 
 
-<!-- ![](https://github.com/Your_Repository_Name/Your_GIF_Name.gif) -->
+### Gameplay:
 ![](misc/gameplay.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
