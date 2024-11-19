@@ -29,7 +29,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Barnyard Blitz Screen Shot][product-screenshot]
+[![Barnyard Blitz Screen Shot][product-screenshot]](https://seamusmcm.github.io/comp225--24/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
