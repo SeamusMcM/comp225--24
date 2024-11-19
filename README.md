@@ -86,16 +86,20 @@ To get a local copy up and running follow these simple steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
-## Usage
+<!-- How To Play -->
+## How To Play
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Summary:
+In this game there are two players racing to collect the most carrots, and to dodge the obstacles. Each player gains points for the carrot they eat as well as for the time they survive without hitting an obstacle. Hitting an obstacle ends that players run, though the other player can continue to play. The game ends when both players have hit an obstacle. The player with the most points wins.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Controls:
+Player 1 (horse): <kbd>W</kbd> to move up, <kbd>A</kbd> to move left, <kbd>S</kbd> to move down, <kbd>D</kbd> to move right
+Player 2 (sheep): <kbd>↑</kbd> to move up, <kbd>←</kbd> to move left, <kbd>↓</kbd> to move down, <kbd>→</kbd> to move right
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Creators
+<!-- Creators -->
+## Creators
 
 <a href="https://github.com/seamusmcm/comp225--24/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=seamusmcm/comp225--24" alt="contrib.rocks image" />
@@ -110,7 +114,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACTS -->
 ## Contacts
-
 Armando Akapo-Nwagbo - <aakaponw@macalester.edu>\
 Seamus McMurrer - <smcmurre@macalester.edu>\
 Avery Sellers - <asellers@macalester.edu>\
