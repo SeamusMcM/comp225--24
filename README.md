@@ -8,43 +8,23 @@
 <br />
 <div align="center">
   <a href="https://github.com/seamusmcm/comp225--24">
-    <img src="MVP/Art/sheep1.png" alt="Logo" width="80" height="80">
+    <img src="MVP/Art/sheep1.png" alt="Logo" width="160" height="160">
   </a>
 
-<h3 align="center">BARNYARD BLITZ</h3>
+  <h3 align="center" style="font-family: 'Pacifico'; font-size: 24px; font-weight: bold;">BARNYARD BLITZ</h3>
 
   <p align="center">
-    Old MacDonald meets Mario Kart in this hilarious tour de force flash game.
+    <em>"Old MacDonald meets Mario Kart in this hilarious tour de force flash game." </em> - Not IGN
+    <br />
+    <em>"Best game since Pong." </em> - My mom
+    <br />
+    <em>"I can't believe it's not butter." </em> - Confused but enthusiastic beta tester
     <br />
     <a href="https://github.com/seamusmcm/comp225--24"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-  </p>
+</p>
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contacts</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -86,15 +66,35 @@ To get a local copy up and running follow these simple steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- How To Play -->
+<!-- HOW TO PLAY -->
 ## How To Play
 
-Summary:
-In this game there are two players racing to collect the most carrots, and to dodge the obstacles. Each player gains points for the carrot they eat as well as for the time they survive without hitting an obstacle. Hitting an obstacle ends that players run, though the other player can continue to play. The game ends when both players have hit an obstacle. The player with the most points wins.
+## 🐴🐑 **Barnyard Blitz**
 
-Controls:
-Player 1 (horse): <kbd>W</kbd> to move up, <kbd>A</kbd> to move left, <kbd>S</kbd> to move down, <kbd>D</kbd> to move right
-Player 2 (sheep): <kbd>↑</kbd> to move up, <kbd>←</kbd> to move left, <kbd>↓</kbd> to move down, <kbd>→</kbd> to move right
+### Summary:
+In **_Barnyard Blitz_**, two players race to collect the most carrots while dodging obstacles.  
+
+- Each player gains points for the carrots they eat and the time they survive without hitting an obstacle.  
+- Hitting an obstacle ends that player's run, but the other player can continue playing.  
+- The game ends when **both players** have hit an obstacle. <!-- - Be sure to keep an eye out for special items that can help you or hinder your opponent... -->
+- Be sure to keep an eye out for the special shields that can protect you from obstacles!
+- 🏆 **The player with the most points wins!**
+
+
+### Controls:
+<!-- - **Start Game**: <kbd>Enter</kbd> -->
+#### Player 1 (Horse):
+- **Move Up**: <kbd>W</kbd>  
+- **Move Left**: <kbd>A</kbd>  
+- **Move Down**: <kbd>S</kbd>  
+- **Move Right**: <kbd>D</kbd>  
+
+#### Player 2 (Sheep):
+- **Move Up**: <kbd>↑</kbd>  
+- **Move Left**: <kbd>←</kbd>  
+- **Move Down**: <kbd>↓</kbd>  
+- **Move Right**: <kbd>→</kbd>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,9 +126,10 @@ Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seam
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* GODOT tutorial (<https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html>)
-* Free Sound Effects (<https://soundbible.com/#google_vignette>)
-* README Template (<https://github.com/othneildrew/Best-README-Template>)
+* [GODOT tutorial](<https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html>)
+* [Free Sound Effects](<https://soundbible.com/#google_vignette>)
+* [README Template](<https://github.com/othneildrew/Best-README-Template>)
+* "Grass Pixel Art Textures", by txturs on [Deviantart](https://www.deviantart.com/txturs/art/Grass-Pixel-Art-Textures-512954148), licensed under CC BY 3.0
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
