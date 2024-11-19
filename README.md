@@ -29,7 +29,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Barnyard Blitz Screen Shot][product-screenshot]](https://example.com)
+![Barnyard Blitz Screen Shot][product-screenshot]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -137,7 +137,7 @@ Project Link: [https://github.com/seamusmcm/comp225--24](https://github.com/seam
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [license-shield]: https://img.shields.io/github/license/seamusmcm/comp225--24.svg?style=for-the-badge
-[license-url]: https://github.com/seamusmcm/comp225--24/blob/master/LICENSE.txt
+[license-url]: https://github.com/seamusmcm/comp225--24/blob/Old_File_Structure/LICENSE
 
 [Godot-url]: https://img.shields.io/badge/Godot%20Engine-478CBF?logo=godotengine&logoColor=fff&style=flat
 [Godot.js]: https://godotengine.org/
