@@ -4,6 +4,7 @@ extends Node
 @export var food_scene: PackedScene
 @export var shield_scene: PackedScene
 
+var temp_players = []  # Temporary list to store players
 var time
 var newestObjects = []
 var allObjects = []
@@ -11,9 +12,15 @@ var difficulty_level = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalScript.connect("removed", deleteObstacle)
-	print_debug("hello")
-	pass
+	print_tree_pretty()
+	var global_script = get_node("/root/GlobalScript")
+	if global_script:
+		global_script.connect("game_over", Callable(self, "_game_over"))
+		
+	#GlobalScript.connect("removed", deleteObstacle)
+	#print_debug("hello")
+	
+	#pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +49,10 @@ func p2_game_over() -> void:
 #-------------------------
 
 func _game_over() -> void:
+	for player in temp_players:
+		if player:  # Ensure player reference is valid
+			player.queue_free()
+	temp_players.clear()
 	# for each thing on screen - remove it 
 	for child in get_children():
 		if child is RigidBody2D:	#check if it is food/obsacle type
@@ -50,11 +61,22 @@ func _game_over() -> void:
 	$Player3.visible = false 	#add some logic so only one of these need be called?
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
+	print ("liom")
 	$FoodTimer.stop()
 	$PowerUpTimer.stop()
-	$HUD.show_game_over()
+	
+	var hud=get_node("HUD")
+	if hud:
+		await hud._on_game_over() 
+	else:
+		print("HUD node not found")
+		
+	#$HUD.show_game_over()
 	AudioController.play_end_level()
-	pass
+	#pass
+
+func on_player_collision(player):
+	temp_players.append(player)  # Add player to the temporary list
 
 func new_game():
 	time = 0

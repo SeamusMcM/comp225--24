@@ -63,5 +63,6 @@ func set_player_inactive(player:int):
 
 func check_game_over():
 	if not p1_active and not p2_active:
+		#get_parent()._game_over() 
 		emit_signal("game_over")
 	
