@@ -60,7 +60,12 @@ func set_player_inactive(player:int):
 	elif player==2:
 		p2_active=false
 	check_game_over()
-
+func reset():
+	p1_points = 0
+	p2_points = 0
+	diff = 1
+	p1_active = true
+	p2_active = true
 func check_game_over():
 	if not p1_active and not p2_active:
 		#get_parent()._game_over() 

@@ -57,8 +57,8 @@ func _game_over() -> void:
 	for child in get_children():
 		if child is RigidBody2D:	#check if it is food/obsacle type
 			child.queue_free()		#remove from canvas entirely
-	$Player2.visible = false
-	$Player3.visible = false 	#add some logic so only one of these need be called?
+	#$Player2.visible = false
+	#$Player3.visible = false 	#add some logic so only one of these need be called?
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
 	print ("liom")
@@ -79,6 +79,15 @@ func on_player_collision(player):
 	temp_players.append(player)  # Add player to the temporary list
 
 func new_game():
+	temp_players.clear()
+	for child in get_children():
+		if child is RigidBody2D:
+			child.queue_free()
+	allObjects.clear()
+	
+	$Player3.reset()
+	$Player2.reset()
+	
 	time = 0
 	#$HUD.update_score(score)
 	difficulty_level = 1
@@ -87,8 +96,12 @@ func new_game():
 	GlobalScript._set_p2_points(0)
 	GlobalScript._p1_points_earned(0)
 	GlobalScript._p2_points_earned(0)
+	GlobalScript.p1_active = true
+	GlobalScript.p2_active = true
 	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
+	$HUD.show_message("New Game Started!")
+
 	AudioController.play_music()
 	$StartTimer.start()
 	allObjects.clear()
@@ -138,8 +151,8 @@ func _on_time_timer_timeout() -> void:
 	if time % 1 == 0:
 		GlobalScript._increment_diff(1)
 		var velocity = Vector2(150 * (1 + (GlobalScript._get_diff() * 0.0011)), 0.0)
-		for i in allObjects:
-			i.linear_velocity = velocity.rotated(3.14159269730118)
+		#for i in allObjects:
+			#i.linear_velocisty = velocity.rotated(3.14159269730118)
 		$TextureRect.material.set_shader_parameter("difficulty", GlobalScript._get_diff())
 
 func adjust_timers() -> void:
