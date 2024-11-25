@@ -4,9 +4,13 @@ signal p2_points_earned
 signal removed
 signal spawn_collision
 signal game_over 
+signal p1_item_got
+signal p2_item_got
 
 var p1_points
 var p2_points
+var p1_item
+var p2_item
 
 var diff = 1
 var p1_active=true
@@ -64,4 +68,17 @@ func set_player_inactive(player:int):
 func check_game_over():
 	if not p1_active and not p2_active:
 		emit_signal("game_over")
-	
+
+func get_p1_item():
+	return p1_item
+
+func get_p2_item():
+	return p2_item
+
+func set_p1_item(input):
+	p1_item = input
+	emit_signal("p1_item_got", input)
+
+func set_p2_item(input):
+	p2_item = input
+	emit_signal("p2_item_got", input)

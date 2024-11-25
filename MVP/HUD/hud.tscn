@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1yn00hk8vybx"]
+[gd_scene load_steps=5 format=3 uid="uid://b1yn00hk8vybx"]
 
 [ext_resource type="Script" path="res://HUD/hudscrpt.gd" id="1_ep1ya"]
 [ext_resource type="FontFile" uid="uid://c3g3vj50hymg1" path="res://Fonts/Minecraft.ttf" id="1_trgib"]
 [ext_resource type="Texture2D" uid="uid://dqb48ueo500r5" path="res://Art/temploadscreen.png" id="3_eso1q"]
+[ext_resource type="Texture2D" uid="uid://crx1fn1bauob0" path="res://Art/ShieldCapsule.png" id="4_0kf57"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ep1ya")
@@ -79,6 +80,36 @@ visible = false
 position = Vector2(561.5, 357)
 scale = Vector2(34.7188, 22.3125)
 texture = ExtResource("3_eso1q")
+
+[node name="P1ItemBox" type="ReferenceRect" parent="."]
+offset_left = 256.0
+offset_top = 9.0
+offset_right = 308.0
+offset_bottom = 61.0
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="P2ItemBox" type="ReferenceRect" parent="."]
+offset_left = 764.0
+offset_top = 9.0
+offset_right = 816.0
+offset_bottom = 61.0
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="P1ShieldCapsule" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(279, 36)
+scale = Vector2(3, 3)
+texture = ExtResource("4_0kf57")
+
+[node name="P2ShieldCapsule" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(787, 36)
+scale = Vector2(3.04394, 3.04394)
+texture = ExtResource("4_0kf57")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
