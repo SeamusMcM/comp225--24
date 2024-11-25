@@ -46,7 +46,10 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Our project is hosted with GitHub Pages. Access it [here](https://seamusmcm.github.io/comp225--24/) with any modern web browser. ![Last update to docs/index.html](https://img.shields.io/github/last-commit/SeamusMcM/comp225--24/Old_File_Structure?path=docs%2Findex.html&style=flat&label=Last%20Updated)
+Our project is hosted with GitHub Pages. Access it [here](https://seamusmcm.github.io/comp225--24/) with any modern web browser. [![Last Updated](https://img.shields.io/github/last-commit/SeamusMcM/comp225--24/Old_File_Structure?style=flat&label=Last%20Updated)](https://github.com/SeamusMcM/comp225--24/blob/Old_File_Structure/docs/index.html)
+
+
+
 
 To get a local copy up and running follow these simple steps.
 
