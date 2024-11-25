@@ -4,6 +4,7 @@ extends Node
 @export var food_scene: PackedScene
 @export var shield_scene: PackedScene
 
+var temp_players = []  # Temporary list to store players
 var time
 var newestObjects = []
 var allObjects = []
@@ -11,9 +12,15 @@ var difficulty_level = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalScript.connect("removed", deleteObstacle)
-	print_debug("hello")
-	pass
+	print_tree_pretty()
+	var global_script = get_node("/root/GlobalScript")
+	if global_script:
+		global_script.connect("game_over", Callable(self, "_game_over"))
+		
+	#GlobalScript.connect("removed", deleteObstacle)
+	#print_debug("hello")
+	
+	#pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,21 +49,45 @@ func p2_game_over() -> void:
 #-------------------------
 
 func _game_over() -> void:
+	for player in temp_players:
+		if player:  # Ensure player reference is valid
+			player.queue_free()
+	temp_players.clear()
 	# for each thing on screen - remove it 
 	for child in get_children():
 		if child is RigidBody2D:	#check if it is food/obsacle type
 			child.queue_free()		#remove from canvas entirely
-	$Player2.visible = false
-	$Player3.visible = false 	#add some logic so only one of these need be called?
+	#$Player2.visible = false
+	#$Player3.visible = false 	#add some logic so only one of these need be called?
 	$TimeTimer.stop()
 	$ObstacleTimer.stop()
+	print ("liom")
 	$FoodTimer.stop()
 	$PowerUpTimer.stop()
-	$HUD.show_game_over()
+	
+	var hud=get_node("HUD")
+	if hud:
+		await hud._on_game_over() 
+	else:
+		print("HUD node not found")
+		
+	#$HUD.show_game_over()
 	AudioController.play_end_level()
-	pass
+	#pass
+
+func on_player_collision(player):
+	temp_players.append(player)  # Add player to the temporary list
 
 func new_game():
+	temp_players.clear()
+	for child in get_children():
+		if child is RigidBody2D:
+			child.queue_free()
+	allObjects.clear()
+	
+	$Player3.reset()
+	$Player2.reset()
+	
 	time = 0
 	#$HUD.update_score(score)
 	difficulty_level = 1
@@ -65,8 +96,12 @@ func new_game():
 	GlobalScript._set_p2_points(0)
 	GlobalScript._p1_points_earned(0)
 	GlobalScript._p2_points_earned(0)
+	GlobalScript.p1_active = true
+	GlobalScript.p2_active = true
 	$Player3.start($StartPosition1.position)
 	$Player2.start($StartPosition2.position)
+	$HUD.show_message("New Game Started!")
+
 	AudioController.play_music()
 	$StartTimer.start()
 	allObjects.clear()
@@ -116,8 +151,8 @@ func _on_time_timer_timeout() -> void:
 	if time % 1 == 0:
 		GlobalScript._increment_diff(1)
 		var velocity = Vector2(150 * (1 + (GlobalScript._get_diff() * 0.0011)), 0.0)
-		for i in allObjects:
-			i.linear_velocity = velocity.rotated(3.14159269730118)
+		#for i in allObjects:
+			#i.linear_velocisty = velocity.rotated(3.14159269730118)
 		$TextureRect.material.set_shader_parameter("difficulty", GlobalScript._get_diff())
 
 func adjust_timers() -> void:

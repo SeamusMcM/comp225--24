@@ -86,6 +86,12 @@ func _on_shield_timer_timeout() -> void:
 	$ShieldTimer.stop()
 	$LosingShieldTimer.start()
 
+func reset():
+	$CollisionShape2D.disabled = false
+	$AnimatedSprite2D.animation = "default"
+	set_collision_mask_value(1, true)
+	set_collision_mask_value(2, false)
+	show()
 
 func _on_losing_shield_timer_timeout() -> void:
 	animation = "default"
