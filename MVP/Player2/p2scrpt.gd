@@ -27,7 +27,8 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("p2_up"):
 		velocity.y -= 1
-
+	if Input.is_action_pressed("p2_item") && GlobalScript.get_p2_item() == "shield":
+		use_shield()
 	if velocity.length() > -1:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
@@ -73,11 +74,24 @@ func _on_body_entered(body: Node2D) -> void:
 		GlobalScript._p2_points_earned(int(100))
 	elif body.get_nombre() == "shield":
 		body.queue_free()
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 		animation = "shield"
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,true)
 		$AnimatedSprite2D.animation = animation
 		$ShieldTimer.start()
+		AudioController.play_shield()
+=======
+		GlobalScript.set_p2_item("shield")
+>>>>>>> 146bce864289e3bf3605b7990889fb091a190968
+=======
+		GlobalScript.set_p2_item("shield")
+>>>>>>> 146bce864289e3bf3605b7990889fb091a190968
+=======
+		GlobalScript.set_p2_item("shield")
+>>>>>>> 146bce864289e3bf3605b7990889fb091a190968
 	else:
 		hide() # Player disappears after being hit.
 		#hit.emit()
@@ -86,6 +100,12 @@ func _on_body_entered(body: Node2D) -> void:
 		GlobalScript.set_player_inactive(2)  # Mark player 2 as inactive
 		print("tree")
 
+func use_shield():
+	animation = "shield"
+	set_collision_mask_value(1,false)
+	set_collision_mask_value(2,true)
+	$AnimatedSprite2D.animation = animation
+	$ShieldTimer.start()
 
 func _on_shield_timer_timeout() -> void:
 	animation = "losingShield"
@@ -105,3 +125,16 @@ func _on_losing_shield_timer_timeout() -> void:
 	set_collision_mask_value(1,true)
 	set_collision_mask_value(2,false)
 	$LosingShieldTimer.stop()
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+	AudioController.stop_shield()
+=======
+	GlobalScript.set_p2_item("none")
+>>>>>>> 146bce864289e3bf3605b7990889fb091a190968
+=======
+	GlobalScript.set_p2_item("none")
+>>>>>>> 146bce864289e3bf3605b7990889fb091a190968
+=======
+	GlobalScript.set_p2_item("none")
+>>>>>>> 146bce864289e3bf3605b7990889fb091a190968

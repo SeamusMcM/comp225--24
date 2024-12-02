@@ -10,11 +10,23 @@ func _ready():
 	#hud = hud_scene.instance()
 	#add_child(hud)
 	var global_script = get_node("/root/GlobalScript")
+	$P1ShieldCapsule.hide()
+	$P2ShieldCapsule.hide()
 	if global_script:
 		global_script.connect("game_over", Callable(self, "_on_game_over"))
+		GlobalScript.connect("p1_points_earned",update_p1score)
+		GlobalScript.connect("p2_points_earned", update_p2score)
+		GlobalScript.connect("p1_item_got", display_p1_item_box)
+		GlobalScript.connect("p2_item_got", display_p2_item_box)
 		global_script.connect("p1_points_earned",Callable( self, "update_p1score"))
 		global_script.connect("p2_points_earned", Callable(self, "update_p2score"))
 		#GlobalScript.connect("points_earned", hud, "update_p2score")
+
+func _process(float) -> void:
+	if Input.is_action_pressed("p1_item"):
+		hide_p1_item_box()
+	if Input.is_action_pressed("p2_item"):
+		hide_p2_item_box()
 
 func _on_game_over():
 
@@ -87,3 +99,17 @@ func _on_start_button_pressed():
 func _on_message_timer_timeout():
 	$Message.hide()
 	#$HUD.update_score(score)
+
+func display_p1_item_box(item):
+	if item == "shield":
+		$P1ShieldCapsule.show()
+
+func display_p2_item_box(item):
+	if item == "shield":
+		$P2ShieldCapsule.show()
+
+func hide_p1_item_box():
+	$P1ShieldCapsule.hide()
+
+func hide_p2_item_box():
+	$P2ShieldCapsule.hide()
