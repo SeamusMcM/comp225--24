@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsj560w0tjtsn"]
+
+[ext_resource type="Script" path="res://Obstacle/puddle.gd" id="1_trdh2"]
+[ext_resource type="Texture2D" uid="uid://dwvvt61veiajr" path="res://Art/Puddle.png" id="2_j5hum"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8xvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j5hum")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Puddle" type="RigidBody2D"]
+texture_filter = 1
+position = Vector2(-159, -102)
+gravity_scale = 0.0
+script = ExtResource("1_trdh2")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_o8xvy")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.5, 1.5)
+build_mode = 1
+polygon = PackedVector2Array(-52, 20.6667, -48, -2, -47, -13, -29, -38, -9, -39, 7.33333, -36, 20.6667, -30.6667, 38, -17, 37, -7, 43.3333, -0.666672, 43, 9, 43, 20, 13, 42, -10, 39.3333, -25, 39, -40, 37)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

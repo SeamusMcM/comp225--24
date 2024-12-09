@@ -3,6 +3,8 @@ extends Node
 @export var obstacle_scene: PackedScene
 @export var food_scene: PackedScene
 @export var shield_scene: PackedScene
+@export var beans_scene: PackedScene
+@export var puddle_scene: PackedScene
 
 var temp_players = []  # Temporary list to store players
 var time
@@ -14,9 +16,9 @@ var difficulty_level = 1
 func _ready() -> void:
 	print_tree_pretty()
 	var global_script = get_node("/root/GlobalScript")
+	GlobalScript.connect("puddle_placed", spawn_puddle)
 	if global_script:
 		global_script.connect("game_over", Callable(self, "_game_over"))
-		
 	#GlobalScript.connect("removed", deleteObstacle)
 	#print_debug("hello")
 	
@@ -64,6 +66,8 @@ func _game_over() -> void:
 	print ("liom")
 	$FoodTimer.stop()
 	$PowerUpTimer.stop()
+	GlobalScript.set_p1_item("none")
+	GlobalScript.set_p2_item("none")
 	
 	var hud=get_node("HUD")
 	if hud:
@@ -212,13 +216,20 @@ func game() -> void:
 
 
 func _on_power_up_timer_timeout() -> void:
-	var shield = shield_scene.instantiate()
-	var shield_spawn_location
-	shield_spawn_location = $ObstaclePath/ObstacleSpawnLocation
-	shield_spawn_location.progress_ratio = randf()
+	var r = RandomNumberGenerator.new()
+	var powerupValue = r.randi_range(1, 2)
+	var powerup
+	if powerupValue == 1:
+		#powerup = shield_scene.instantiate()
+		powerup = beans_scene.instantiate()
+	if powerupValue == 2:
+		powerup = beans_scene.instantiate()
+	var powerup_spawn_location
+	powerup_spawn_location = $ObstaclePath/ObstacleSpawnLocation
+	powerup_spawn_location.progress_ratio = randf()
 	
 	
-	#Attempt at making the carrots not spawn on top of the other objects
+	#Attempt at making the powerups not spawn on top of the other objects
 	var rng = RandomNumberGenerator.new()
 	var my_random_number
 	for i in range(10):
@@ -230,22 +241,62 @@ func _on_power_up_timer_timeout() -> void:
 		if goodNumber == true:
 			break
 	
-	shield_spawn_location.position.y = my_random_number
+	powerup_spawn_location.position.y = my_random_number
 	
 	
-	var direction = shield_spawn_location.rotation + PI / 2
+	var direction = powerup_spawn_location.rotation + PI / 2
 	
-	shield.position = shield_spawn_location.position
+	powerup.position = powerup_spawn_location.position
 	
-	#Check if carrot and obstacle collide
-	if shield_spawn_location.position.y >= newestObjects[-1] -15 && shield_spawn_location.position.y <= newestObjects[-1] + 100:
+	#Check if powerup and obstacle collide
+	if powerup_spawn_location.position.y >= newestObjects[-1] -15 && powerup_spawn_location.position.y <= newestObjects[-1] + 100:
 		print("Objects Spawned On Top of Eachother")
 		print("Object y: " + str(newestObjects[-1]))
-		print("Carrot y: " + str(shield.position.y))
+		print("Powerup y: " + str(powerup.position.y))
 	
 	#var velocity = Vector2(150.0, 0.0)
 	var base_velocity = 150
 	var velocity = Vector2(base_velocity * (1+ (GlobalScript._get_diff() * 0.001)), 0.0)
-	shield.linear_velocity = velocity.rotated(direction)
+	powerup.linear_velocity = velocity.rotated(direction)
 	
-	add_child(shield)
+	add_child(powerup)
+
+func spawn_puddle(x,y):
+	var puddle = puddle_scene.instantiate()
+	var puddle_spawn_location
+	puddle_spawn_location = $ObstaclePath/ObstacleSpawnLocation
+	puddle_spawn_location.progress_ratio = randf()
+	
+	
+	##Attempt at making the powerups not spawn on top of the other objects
+	#var rng = RandomNumberGenerator.new()
+	#var my_random_number
+	#for i in range(10):
+		#my_random_number = rng.randf_range(40, 720.0)
+		#var goodNumber = true
+		#for num in newestObjects:
+			#if my_random_number >= num - 15 && my_random_number <= num + 100:
+				#goodNumber = false
+		#if goodNumber == true:
+			#break
+	
+	puddle_spawn_location.position.x = x
+	puddle_spawn_location.position.y = y
+	
+	
+	var direction = puddle_spawn_location.rotation + PI / 2
+	
+	puddle.position = puddle_spawn_location.position
+	
+	#Check if powerup and obstacle collide
+	if puddle_spawn_location.position.y >= newestObjects[-1] -15 && puddle_spawn_location.position.y <= newestObjects[-1] + 100:
+		print("Objects Spawned On Top of Eachother")
+		print("Object y: " + str(newestObjects[-1]))
+		print("Powerup y: " + str(puddle.position.y))
+	
+	#var velocity = Vector2(150.0, 0.0)
+	var base_velocity = 150
+	var velocity = Vector2(base_velocity * (1+ (GlobalScript._get_diff() * 0.001)), 0.0)
+	puddle.linear_velocity = velocity.rotated(direction)
+	
+	add_child(puddle)

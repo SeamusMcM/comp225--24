@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbglwvd8qc8da"]
+
+[ext_resource type="Script" path="res://PowerUps/beans.gd" id="1_sh1nn"]
+[ext_resource type="Texture2D" uid="uid://df4qb5kpyujib" path="res://Art/CanOfBeans.png" id="2_0ynu8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aefmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0ynu8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfdby"]
+size = Vector2(32, 32)
+
+[node name="Beans" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_sh1nn")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_aefmt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jfdby")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -6,6 +6,7 @@ signal spawn_collision
 signal game_over 
 signal p1_item_got
 signal p2_item_got
+signal puddle_placed
 
 var p1_points
 var p2_points
@@ -88,3 +89,6 @@ func set_p1_item(input):
 func set_p2_item(input):
 	p2_item = input
 	emit_signal("p2_item_got", input)
+
+func place_puddle(x,y):
+	emit_signal("puddle_placed", x, y)

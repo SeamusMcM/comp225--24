@@ -2,6 +2,8 @@ extends Area2D
 signal hit
 
 var animation
+var dampener = 1
+var backwardsModifier = 1
 
 @export var speed = 400 #player speed (pxl/sec) 
 var screen_size #size of game window
@@ -21,16 +23,20 @@ func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("p2_right"):
 		velocity.x += 1
+		backwardsModifier = 1
 	if Input.is_action_pressed("p2_left"):
 		velocity.x -= 1
+		backwardsModifier = 1.3
 	if Input.is_action_pressed("p2_down"):
 		velocity.y += 1
 	if Input.is_action_pressed("p2_up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("p2_item") && GlobalScript.get_p2_item() == "shield":
 		use_shield()
+	if Input.is_action_pressed("p2_item") && GlobalScript.get_p2_item() == "beans":
+		use_beans()
 	if velocity.length() > -1:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * speed * dampener * backwardsModifier
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
@@ -52,6 +58,7 @@ func _process(delta):
 func start(pos):
 	position = pos
 	show()
+	print(self.name)
 	$CollisionShape2D.disabled = false
 
 
@@ -75,6 +82,11 @@ func _on_body_entered(body: Node2D) -> void:
 	elif body.get_nombre() == "shield":
 		body.queue_free()
 		GlobalScript.set_p2_item("shield")
+	elif body.get_nombre() == "beans":
+		body.queue_free()
+		GlobalScript.set_p2_item("beans")
+	elif body.get_nombre() == "puddle":
+		dampener = 0.5
 	else:
 		hide() # Player disappears after being hit.
 		#hit.emit()
@@ -82,6 +94,10 @@ func _on_body_entered(body: Node2D) -> void:
 		$CollisionShape2D.set_deferred("disabled", true)
 		GlobalScript.set_player_inactive(2)  # Mark player 2 as inactive
 		print("tree")
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.get_nombre() == "puddle":
+		dampener = 1
 
 func use_shield():
 	animation = "shield"
@@ -108,4 +124,9 @@ func _on_losing_shield_timer_timeout() -> void:
 	set_collision_mask_value(1,true)
 	set_collision_mask_value(2,false)
 	$LosingShieldTimer.stop()
+	GlobalScript.set_p2_item("none")
+
+func use_beans():
+	print(self.name)
+	GlobalScript.place_puddle(position.x-30, position.y)
 	GlobalScript.set_p2_item("none")

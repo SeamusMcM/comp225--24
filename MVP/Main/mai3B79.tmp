@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtsmq8neipb6l"]
+[gd_scene load_steps=14 format=3 uid="uid://dtsmq8neipb6l"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_h7gr7"]
 [ext_resource type="PackedScene" uid="uid://bv7bidph2442s" path="res://Obstacle/obstacle.tscn" id="2_eiky4"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://gl671gp8c20" path="res://Player2/player_2.tscn" id="4_ehqpy"]
 [ext_resource type="Script" path="res://Main/manager.gd" id="4_pkt3b"]
 [ext_resource type="PackedScene" uid="uid://dgbvq8aw07t5w" path="res://PowerUps/shield.tscn" id="4_rpru7"]
-[ext_resource type="PackedScene" uid="uid://bbglwvd8qc8da" path="res://PowerUps/beans.tscn" id="5_2ppa8"]
 [ext_resource type="PackedScene" uid="uid://b1yn00hk8vybx" path="res://HUD/hud.tscn" id="5_kp5l3"]
 [ext_resource type="Shader" path="res://Main/scroll.gdshader" id="6_07nh5"]
-[ext_resource type="PackedScene" uid="uid://dsj560w0tjtsn" path="res://Obstacle/puddle.tscn" id="6_d5kmw"]
 [ext_resource type="Texture2D" uid="uid://c0tw8sud6imcq" path="res://Art/grass.png" id="7_bo4oq"]
 [ext_resource type="PackedScene" uid="uid://djscf225o18e5" path="res://pause_menu.tscn" id="10_xjnt6"]
 
@@ -31,12 +29,12 @@ script = ExtResource("1_h7gr7")
 obstacle_scene = ExtResource("2_eiky4")
 food_scene = ExtResource("3_dk6le")
 shield_scene = ExtResource("4_rpru7")
-beans_scene = ExtResource("5_2ppa8")
-puddle_scene = ExtResource("6_d5kmw")
 
 [node name="Manager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("4_pkt3b")
+
+[node name="Player1" parent="." instance=ExtResource("4_ehqpy")]
 
 [node name="Player2" parent="." instance=ExtResource("4_ehqpy")]
 
@@ -86,8 +84,6 @@ stretch_mode = 1
 [node name="PauseMenu" parent="TextureRect" instance=ExtResource("10_xjnt6")]
 process_mode = 2
 layout_mode = 1
-
-[node name="Puddle" parent="." instance=ExtResource("6_d5kmw")]
 
 [connection signal="hit" from="Player2" to="." method="p2_game_over"]
 [connection signal="hit" from="Player2" to="." method="_game_over"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1yn00hk8vybx"]
+[gd_scene load_steps=6 format=3 uid="uid://b1yn00hk8vybx"]
 
 [ext_resource type="Script" path="res://HUD/hudscrpt.gd" id="1_ep1ya"]
 [ext_resource type="FontFile" uid="uid://c3g3vj50hymg1" path="res://Fonts/Minecraft.ttf" id="1_trgib"]
 [ext_resource type="Texture2D" uid="uid://dqb48ueo500r5" path="res://Art/temploadscreen.png" id="3_eso1q"]
 [ext_resource type="Texture2D" uid="uid://crx1fn1bauob0" path="res://Art/ShieldCapsule.png" id="4_0kf57"]
+[ext_resource type="Texture2D" uid="uid://df4qb5kpyujib" path="res://Art/CanOfBeans.png" id="5_g3pul"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ep1ya")
@@ -110,6 +111,18 @@ texture_filter = 1
 position = Vector2(787, 36)
 scale = Vector2(3.04394, 3.04394)
 texture = ExtResource("4_0kf57")
+
+[node name="P1Beans" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(284, 35)
+scale = Vector2(2.9375, 2.9375)
+texture = ExtResource("5_g3pul")
+
+[node name="P2Beans" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(791.664, 34.6636)
+scale = Vector2(2.89603, 2.89603)
+texture = ExtResource("5_g3pul")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

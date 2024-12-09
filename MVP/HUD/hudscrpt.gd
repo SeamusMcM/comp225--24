@@ -12,6 +12,8 @@ func _ready():
 	var global_script = get_node("/root/GlobalScript")
 	$P1ShieldCapsule.hide()
 	$P2ShieldCapsule.hide()
+	$P1Beans.hide()
+	$P2Beans.hide()
 	if global_script:
 		global_script.connect("game_over", Callable(self, "_on_game_over"))
 		GlobalScript.connect("p1_points_earned",update_p1score)
@@ -29,7 +31,6 @@ func _process(float) -> void:
 		hide_p2_item_box()
 
 func _on_game_over():
-
 	#$main._game_over()
 	var global_script = get_node("/root/GlobalScript")
 	if global_script:
@@ -50,7 +51,10 @@ func _on_game_over():
 		
 	await get_tree().create_timer(3.0).timeout	
 	$StartButton.show()
-	
+	$P1ShieldCapsule.hide()
+	$P2ShieldCapsule.hide()
+	$P1Beans.hide()
+	$P2Beans.hide()
 func show_message(text):
 	$Message.text = text
 	$Message.show()
@@ -103,13 +107,19 @@ func _on_message_timer_timeout():
 func display_p1_item_box(item):
 	if item == "shield":
 		$P1ShieldCapsule.show()
+	if item == "beans":
+		$P1Beans.show()
 
 func display_p2_item_box(item):
 	if item == "shield":
 		$P2ShieldCapsule.show()
+	if item == "beans":
+		$P2Beans.show()
 
 func hide_p1_item_box():
 	$P1ShieldCapsule.hide()
+	$P1Beans.hide()
 
 func hide_p2_item_box():
 	$P2ShieldCapsule.hide()
+	$P2Beans.hide()
