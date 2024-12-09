@@ -19,6 +19,7 @@ radius = 16.0
 height = 48.0
 
 [node name="Shield" type="RigidBody2D"]
+texture_filter = 1
 gravity_scale = 0.0
 script = ExtResource("1_k6yin")
 metadata/_edit_group_ = true

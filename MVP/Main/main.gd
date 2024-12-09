@@ -219,8 +219,7 @@ func _on_power_up_timer_timeout() -> void:
 	var powerupValue = r.randi_range(1, 2)
 	var powerup
 	if powerupValue == 1:
-		#powerup = shield_scene.instantiate()
-		powerup = beans_scene.instantiate()
+		powerup = shield_scene.instantiate()
 	if powerupValue == 2:
 		powerup = beans_scene.instantiate()
 	var powerup_spawn_location
