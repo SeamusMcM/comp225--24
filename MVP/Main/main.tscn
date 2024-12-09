@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://Main/scroll.gdshader" id="6_07nh5"]
 [ext_resource type="PackedScene" uid="uid://dsj560w0tjtsn" path="res://Obstacle/puddle.tscn" id="6_d5kmw"]
 [ext_resource type="Texture2D" uid="uid://c0tw8sud6imcq" path="res://Art/grass.png" id="7_bo4oq"]
-[ext_resource type="PackedScene" uid="uid://djscf225o18e5" path="res://pause_menu.tscn" id="10_xjnt6"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="10_xjnt6"]
 
 [sub_resource type="Curve2D" id="Curve2D_gicdn"]
 _data = {

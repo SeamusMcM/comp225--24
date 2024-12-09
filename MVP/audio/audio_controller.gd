@@ -36,4 +36,12 @@ func play_bleat()-> void:
 
 func play_countdown()-> void:
 	$countdown.play()
+
+func play_shield()-> void:
+	$shield.play()
+
+func stop_shield() -> void:
+	if $shield.playing:
+		$shield.stop()
+	
 	

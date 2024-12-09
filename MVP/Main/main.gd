@@ -91,7 +91,6 @@ func new_game():
 	
 	$Player3.reset()
 	$Player2.reset()
-	
 	time = 0
 	#$HUD.update_score(score)
 	difficulty_level = 1
