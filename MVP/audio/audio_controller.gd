@@ -44,4 +44,5 @@ func stop_shield() -> void:
 	if $shield.playing:
 		$shield.stop()
 	
-	
+func play_mudsound()-> void:
+	$mudsound.play()

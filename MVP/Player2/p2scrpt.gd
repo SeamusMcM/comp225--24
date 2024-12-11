@@ -128,5 +128,6 @@ func _on_losing_shield_timer_timeout() -> void:
 	GlobalScript.set_p2_item("none")
 
 func use_beans():
+	AudioController.play_mudsound()
 	GlobalScript.place_puddle(position.x-30, position.y)
 	GlobalScript.set_p2_item("none")
