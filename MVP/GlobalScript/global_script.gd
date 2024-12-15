@@ -64,8 +64,10 @@ func _p2_points_earned(added_points: int):
 func set_player_inactive(player:int):
 	if player==1:
 		p1_active = false
+		set_p1_item("none")
 	elif player==2:
 		p2_active=false
+		set_p2_item("none")
 	check_game_over()
 func reset():
 	p1_points = 0

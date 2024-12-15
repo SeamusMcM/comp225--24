@@ -57,6 +57,8 @@ func _on_game_over():
 	hide_p1_item_box()
 	hide_p2_item_box()
 	hide_tips()
+	p1ItemTip = false
+	p2ItemTip = false
 
 func show_message(text):
 	$Message.text = text
