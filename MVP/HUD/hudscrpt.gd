@@ -110,11 +110,11 @@ func _on_message_timer_timeout():
 	#$HUD.update_score(score)
 
 func display_p1_item_box(item):
-	if p1ItemTip == false:
+	if p1ItemTip == false && GlobalScript.get_p1_item() != "none":
 		$PressLabel.show()
 		$LeftButtonLabel.show()
 		$LeftWhiteArrow.show()
-		p1ItemTip = true
+		p1ItemTip = true;
 	if item == "shield":
 		$P1ShieldCapsule.show()
 	if item == "beans":
@@ -125,7 +125,7 @@ func display_p1_item_box(item):
 		$P1MysteryBox.play()
 
 func display_p2_item_box(item):
-	if p2ItemTip == false:
+	if p2ItemTip == false && GlobalScript.get_p2_item() != "none":
 		$PressLabel.show()
 		$RightButtonLabel.show()
 		$RightWhiteArrow.show()
