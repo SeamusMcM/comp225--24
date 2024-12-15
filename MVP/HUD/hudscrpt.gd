@@ -111,6 +111,7 @@ func display_p1_item_box(item):
 	if p1ItemTip == false:
 		$PressLabel.show()
 		$LeftButtonLabel.show()
+		$LeftWhiteArrow.show()
 		p1ItemTip = true
 	if item == "shield":
 		$P1ShieldCapsule.show()
@@ -125,6 +126,7 @@ func display_p2_item_box(item):
 	if p2ItemTip == false:
 		$PressLabel.show()
 		$RightButtonLabel.show()
+		$RightWhiteArrow.show()
 		p2ItemTip = true
 	if item == "shield":
 		$P2ShieldCapsule.show()
@@ -199,3 +201,5 @@ func hide_tips():
 	$PressLabel.hide()
 	$LeftButtonLabel.hide()
 	$RightButtonLabel.hide()
+	$LeftWhiteArrow.hide()
+	$RightWhiteArrow.hide()
