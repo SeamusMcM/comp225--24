@@ -90,13 +90,16 @@ In **_Barnyard Blitz_**, two players race to collect the most carrots while dodg
 - **Move Up**: <kbd>W</kbd>  
 - **Move Left**: <kbd>A</kbd>  
 - **Move Down**: <kbd>S</kbd>  
-- **Move Right**: <kbd>D</kbd>  
+- **Move Right**: <kbd>D</kbd>
+- **Power Up**: <kbd>Q</kbd>
 
 #### Player 2 (Sheep):
 - **Move Up**: <kbd>↑</kbd>  
 - **Move Left**: <kbd>←</kbd>  
 - **Move Down**: <kbd>↓</kbd>  
 - **Move Right**: <kbd>→</kbd>
+- **Power Up**: <kbd>/</kbd>
+
 
 
 ### Gameplay:
@@ -104,6 +107,10 @@ In **_Barnyard Blitz_**, two players race to collect the most carrots while dodg
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+
+## Known Bugs
+- Esc pause menu is inconsistant in functionality - often causing the need to reload the webpage
 <!-- Creators -->
 ## Creators
 
