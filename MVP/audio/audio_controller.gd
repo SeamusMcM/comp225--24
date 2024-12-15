@@ -46,3 +46,9 @@ func stop_shield() -> void:
 	
 func play_mudsound()-> void:
 	$mudsound.play()
+
+func play_mysterybox()-> void:
+	$mysterybox.play()
+	
+func play_mysterybox2()-> void:
+	$mysterybox2.play()

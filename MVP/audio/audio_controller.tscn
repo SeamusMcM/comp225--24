@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://coeod3e8k2e26"]
+[gd_scene load_steps=11 format=3 uid="uid://coeod3e8k2e26"]
 
 [ext_resource type="Script" path="res://audio/audio_controller.gd" id="1_im85c"]
 [ext_resource type="AudioStream" uid="uid://breo60lk74t4r" path="res://audio/House In a Forest Loop.ogg" id="2_4dd86"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://djnjhfi7w2e7h" path="res://audio/Bleat-SoundBible.com-893851569.mp3" id="3_femfi"]
 [ext_resource type="AudioStream" uid="uid://bo5fabhw3aqkj" path="res://audio/gameover.wav" id="3_vtton"]
 [ext_resource type="AudioStream" uid="uid://cw0gvotnvjnjl" path="res://audio/Horse Neigh-SoundBible.com-1740540960.mp3" id="4_k14hc"]
+[ext_resource type="AudioStream" uid="uid://sly4inutm6ku" path="res://audio/Jackpot_27.wav" id="6_63let"]
+[ext_resource type="AudioStream" uid="uid://csheivqefkvrf" path="res://audio/mario-power-down.mp3" id="7_hsr51"]
 
 [node name="AudioController" type="Node2D"]
 script = ExtResource("1_im85c")
@@ -29,6 +31,14 @@ volume_db = 3.28
 [node name="mudsound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8v6y8")
 volume_db = 6.559
+
+[node name="mysterybox" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_63let")
+volume_db = 7.496
+
+[node name="mysterybox2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hsr51")
+volume_db = 7.496
 
 [node name="endgame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vtton")
