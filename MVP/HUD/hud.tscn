@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1yn00hk8vybx"]
+[gd_scene load_steps=20 format=3 uid="uid://b1yn00hk8vybx"]
 
 [ext_resource type="Script" path="res://HUD/hudscrpt.gd" id="1_ep1ya"]
 [ext_resource type="FontFile" uid="uid://c3g3vj50hymg1" path="res://Fonts/Minecraft.ttf" id="1_trgib"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dq0nrt86qgvob" path="res://Art/Minus500.png" id="13_63ho2"]
 [ext_resource type="Texture2D" uid="uid://mder6g7olb6q" path="res://Art/Plus100.png" id="14_3g4qh"]
 [ext_resource type="Texture2D" uid="uid://dec6ikxnmm52" path="res://Art/Plus500.png" id="16_qltjr"]
+[ext_resource type="Texture2D" uid="uid://dh6pbmuf1y6at" path="res://Art/WhiteArrow.png" id="17_mur12"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lcdqs"]
 animations = [{
@@ -287,9 +288,9 @@ sprite_frames = SubResource("SpriteFrames_vkdgj")
 
 [node name="PressLabel" type="Label" parent="."]
 texture_filter = 1
-offset_left = 493.0
+offset_left = 492.0
 offset_top = 19.0
-offset_right = 579.0
+offset_right = 578.0
 offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("1_trgib")
 theme_override_font_sizes/font_size = 32
@@ -297,24 +298,37 @@ text = "press"
 
 [node name="LeftButtonLabel" type="Label" parent="."]
 texture_filter = 1
-offset_left = 422.0
-offset_top = 9.0
-offset_right = 478.0
-offset_bottom = 53.0
+offset_left = 419.0
+offset_top = 18.0
+offset_right = 475.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("1_trgib")
 theme_override_font_sizes/font_size = 32
-text = "q ←"
+text = "q  "
 
 [node name="RightButtonLabel" type="Label" parent="."]
 texture_filter = 1
-offset_left = 589.0
-offset_top = 9.0
-offset_right = 645.0
-offset_bottom = 53.0
+offset_left = 618.0
+offset_top = 22.0
+offset_right = 674.0
+offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("1_trgib")
 theme_override_font_sizes/font_size = 32
-text = "→ /
+text = "  /
 "
+
+[node name="LeftWhiteArrow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(477, 36)
+scale = Vector2(3.52344, 3.52344)
+texture = ExtResource("17_mur12")
+
+[node name="RightWhiteArrow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(592, 32)
+rotation = 3.14159
+scale = Vector2(3.88425, 3.88425)
+texture = ExtResource("17_mur12")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

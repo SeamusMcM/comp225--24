@@ -7,9 +7,9 @@ uniform int startTime = 0;
 void vertex() {
 	// Called for every vertex the material is visible on.
 	//UV.x += (TIME*0.29) + (float(difficulty) * 20.0);
-	UV.x += ((TIME - float(startTime))*0.195)*(1.0 + (float(difficulty) * 0.001));
+	UV.x += ((TIME - float(startTime))*0.195)*(1.0 + (float(difficulty) * 0.001)) * 1.485;
 	//UV.x += (float(newTime)*0.00375)*(1.0 + (float(difficulty) * 0.001));
-	//UV.x += (float(difficulty) * 0.007);
+	//UV.x += (float(difficulty) * 200.0);
 }
 
 void fragment() {

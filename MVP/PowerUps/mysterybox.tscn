@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyq2fywhsn4x5"]
+[gd_scene load_steps=5 format=3 uid="uid://byr1qpve66djm"]
 
 [ext_resource type="Texture2D" uid="uid://bko8k4nfjovkk" path="res://Art/MysteryBox.png" id="1_58aeu"]
 [ext_resource type="Script" path="res://PowerUps/mystery_box.gd" id="1_h7ocv"]

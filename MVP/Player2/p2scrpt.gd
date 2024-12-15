@@ -154,18 +154,23 @@ func use_mysterybox():
 	if mysteryboxValue == 1:
 		GlobalScript.p2_play_mysterybox_result("plus_50")
 		GlobalScript._p2_points_earned(int(50))
+		AudioController.play_mysterybox()
 	if mysteryboxValue == 2:
 		GlobalScript.p2_play_mysterybox_result("plus_100")
 		GlobalScript._p2_points_earned(int(100))
+		AudioController.play_mysterybox()
 	if mysteryboxValue == 3:
 		GlobalScript.p2_play_mysterybox_result("plus_500")
 		GlobalScript._p2_points_earned(int(500))
+		AudioController.play_mysterybox()
 	if mysteryboxValue == 4:
 		GlobalScript.p2_play_mysterybox_result("minus_100")
 		GlobalScript._p2_points_earned(int(-100))
+		AudioController.play_mysterybox2()
 	if mysteryboxValue == 5:
 		GlobalScript.p2_play_mysterybox_result("minus_500")
 		GlobalScript._p2_points_earned(int(-500))
+		AudioController.play_mysterybox2()
 	if mysteryboxValue == 6:
 		mysteryItem = "shield"
 		$MysteryItemTimer.start()
