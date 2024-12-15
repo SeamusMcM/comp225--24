@@ -5,15 +5,16 @@ signal start_game
 #var hud = get_node("res://HUD/hud.tscn")
 #var hud_scene = preload("res://HUD/hud.tscn")
 #var hud = null
+var p1ItemTip = false
+var p2ItemTip = false
 
 func _ready(): 
 	#hud = hud_scene.instance()
 	#add_child(hud)
 	var global_script = get_node("/root/GlobalScript")
-	$P1ShieldCapsule.hide()
-	$P2ShieldCapsule.hide()
-	$P1Beans.hide()
-	$P2Beans.hide()
+	hide_p1_item_box()
+	hide_p2_item_box()
+	hide_tips()
 	if global_script:
 		global_script.connect("game_over", Callable(self, "_on_game_over"))
 		GlobalScript.connect("p1_points_earned",update_p1score)
@@ -22,12 +23,14 @@ func _ready():
 		GlobalScript.connect("p2_item_got", display_p2_item_box)
 		global_script.connect("p1_points_earned",Callable( self, "update_p1score"))
 		global_script.connect("p2_points_earned", Callable(self, "update_p2score"))
+		GlobalScript.connect("p1_mysterybox_opened", p1_show_reward)
+		GlobalScript.connect("p2_mysterybox_opened", p2_show_reward)
 		#GlobalScript.connect("points_earned", hud, "update_p2score")
 
 func _process(float) -> void:
-	if Input.is_action_pressed("p1_item"):
+	if Input.is_action_pressed("p1_item") && GlobalScript.get_p1_item() != "mystery_reward":
 		hide_p1_item_box()
-	if Input.is_action_pressed("p2_item"):
+	if Input.is_action_pressed("p2_item")  && GlobalScript.get_p2_item() != "mystery_reward":
 		hide_p2_item_box()
 
 func _on_game_over():
@@ -51,10 +54,10 @@ func _on_game_over():
 		
 	await get_tree().create_timer(3.0).timeout	
 	$StartButton.show()
-	$P1ShieldCapsule.hide()
-	$P2ShieldCapsule.hide()
-	$P1Beans.hide()
-	$P2Beans.hide()
+	hide_p1_item_box()
+	hide_p2_item_box()
+	hide_tips()
+
 func show_message(text):
 	$Message.text = text
 	$Message.show()
@@ -105,21 +108,94 @@ func _on_message_timer_timeout():
 	#$HUD.update_score(score)
 
 func display_p1_item_box(item):
+	if p1ItemTip == false:
+		$PressLabel.show()
+		$LeftButtonLabel.show()
+		p1ItemTip = true
 	if item == "shield":
 		$P1ShieldCapsule.show()
 	if item == "beans":
 		$P1Beans.show()
+	if item == "mysterybox":
+		$P1MysteryBox.animation = "default"
+		$P1MysteryBox.show()
+		$P1MysteryBox.play()
 
 func display_p2_item_box(item):
+	if p2ItemTip == false:
+		$PressLabel.show()
+		$RightButtonLabel.show()
+		p2ItemTip = true
 	if item == "shield":
 		$P2ShieldCapsule.show()
 	if item == "beans":
 		$P2Beans.show()
+	if item == "mysterybox":
+		$P2MysteryBox.animation = "default"
+		$P2MysteryBox.show()
+		$P2MysteryBox.play()
 
 func hide_p1_item_box():
 	$P1ShieldCapsule.hide()
 	$P1Beans.hide()
+	$P1MysteryBox.hide()
+	$P1MysteryBox.stop()
 
 func hide_p2_item_box():
 	$P2ShieldCapsule.hide()
 	$P2Beans.hide()
+	$P2MysteryBox.hide()
+	$P2MysteryBox.stop()
+
+func p1_show_reward(reward):
+	if reward == "plus_50":
+		$P1MysteryBox.animation = "plus_50"
+	if reward == "plus_100":
+		$P1MysteryBox.animation = "plus_100"
+	if reward == "plus_500":
+		$P1MysteryBox.animation = "plus_500"
+	if reward == "minus_100":
+		$P1MysteryBox.animation = "minus_100"
+	if reward == "minus_500":
+		$P1MysteryBox.animation = "minus_500"
+	if reward == "hide":
+		$P1MysteryBox.hide()
+	else:
+		$P1MysteryBox.play()
+		$P1MysteryBox.show()
+		$P1RewardTimer.start()
+
+func p2_show_reward(reward):
+	if reward == "plus_50":
+		$P2MysteryBox.animation = "plus_50"
+	if reward == "plus_100":
+		$P2MysteryBox.animation = "plus_100"
+	if reward == "plus_500":
+		$P2MysteryBox.animation = "plus_500"
+	if reward == "minus_100":
+		$P2MysteryBox.animation = "minus_100"
+	if reward == "minus_500":
+		$P2MysteryBox.animation = "minus_500"
+	if reward == "hide":
+		$P2MysteryBox.hide()
+	else:
+		$P2MysteryBox.play()
+		$P2MysteryBox.show()
+		$P2RewardTimer.start()
+
+func _on_p_1_reward_timer_timeout() -> void:
+	GlobalScript.set_p1_item("none")
+	$P1MysteryBox.stop()
+	$P1MysteryBox.hide()
+	$P1RewardTimer.stop()
+
+func _on_p_2_reward_timer_timeout() -> void:
+	GlobalScript.set_p2_item("none")
+	$P2MysteryBox.stop()
+	$P2MysteryBox.hide()
+	$P2RewardTimer.stop()
+
+func hide_tips():
+	$PressLabel.hide()
+	$LeftButtonLabel.hide()
+	$RightButtonLabel.hide()

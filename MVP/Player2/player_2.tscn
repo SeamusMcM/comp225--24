@@ -74,7 +74,10 @@ wait_time = 4.0
 [node name="LosingShieldTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="MysteryItemTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
 [connection signal="timeout" from="LosingShieldTimer" to="." method="_on_losing_shield_timer_timeout"]
+[connection signal="timeout" from="MysteryItemTimer" to="." method="_on_mystery_item_timer_timeout"]

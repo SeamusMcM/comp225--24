@@ -1,10 +1,153 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1yn00hk8vybx"]
+[gd_scene load_steps=19 format=3 uid="uid://b1yn00hk8vybx"]
 
 [ext_resource type="Script" path="res://HUD/hudscrpt.gd" id="1_ep1ya"]
 [ext_resource type="FontFile" uid="uid://c3g3vj50hymg1" path="res://Fonts/Minecraft.ttf" id="1_trgib"]
 [ext_resource type="Texture2D" uid="uid://dqb48ueo500r5" path="res://Art/temploadscreen.png" id="3_eso1q"]
 [ext_resource type="Texture2D" uid="uid://crx1fn1bauob0" path="res://Art/ShieldCapsule.png" id="4_0kf57"]
 [ext_resource type="Texture2D" uid="uid://df4qb5kpyujib" path="res://Art/CanOfBeans.png" id="5_g3pul"]
+[ext_resource type="Texture2D" uid="uid://dxvefb21tq4bb" path="res://Art/MysteryBoxRedGreen.png" id="6_0jlyy"]
+[ext_resource type="Texture2D" uid="uid://o5okows8hq2o" path="res://Art/MysteryBoxOrangeBlue.png" id="7_ysaml"]
+[ext_resource type="Texture2D" uid="uid://cup8teureu2v8" path="res://Art/MysteryBoxYellowPurple.png" id="8_s4qdi"]
+[ext_resource type="Texture2D" uid="uid://d2qxh2amv82cg" path="res://Art/MysteryBoxGreenRed.png" id="9_p2gf7"]
+[ext_resource type="Texture2D" uid="uid://bvgiharwj0qse" path="res://Art/MysteryBoxBlueOrange.png" id="10_r8tah"]
+[ext_resource type="Texture2D" uid="uid://dlm4py2fcyrtg" path="res://Art/MysteryBoxPurpleYellow.png" id="11_pfspm"]
+[ext_resource type="Texture2D" uid="uid://s681su1pxxus" path="res://Art/Minus100.png" id="12_fr1w3"]
+[ext_resource type="Texture2D" uid="uid://cxmxpkyxq2xca" path="res://Art/Plus50.png" id="12_m12yo"]
+[ext_resource type="Texture2D" uid="uid://dq0nrt86qgvob" path="res://Art/Minus500.png" id="13_63ho2"]
+[ext_resource type="Texture2D" uid="uid://mder6g7olb6q" path="res://Art/Plus100.png" id="14_3g4qh"]
+[ext_resource type="Texture2D" uid="uid://dec6ikxnmm52" path="res://Art/Plus500.png" id="16_qltjr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcdqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0jlyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ysaml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s4qdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p2gf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_r8tah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pfspm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_fr1w3")
+}],
+"loop": true,
+"name": &"minus_100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_63ho2")
+}],
+"loop": true,
+"name": &"minus_500",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3g4qh")
+}],
+"loop": true,
+"name": &"plus_100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_m12yo")
+}],
+"loop": true,
+"name": &"plus_50",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_qltjr")
+}],
+"loop": true,
+"name": &"plus_500",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkdgj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0jlyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ysaml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s4qdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p2gf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_r8tah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pfspm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_fr1w3")
+}],
+"loop": true,
+"name": &"minus_100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_63ho2")
+}],
+"loop": true,
+"name": &"minus_500",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3g4qh")
+}],
+"loop": true,
+"name": &"plus_100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_m12yo")
+}],
+"loop": true,
+"name": &"plus_50",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_qltjr")
+}],
+"loop": true,
+"name": &"plus_500",
+"speed": 5.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ep1ya")
@@ -76,6 +219,12 @@ text = "Start"
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="P1RewardTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="P2RewardTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="LoadScreen" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(561.5, 357)
@@ -83,18 +232,9 @@ scale = Vector2(34.7188, 22.3125)
 texture = ExtResource("3_eso1q")
 
 [node name="P1ItemBox" type="ReferenceRect" parent="."]
-offset_left = 256.0
+offset_left = 346.0
 offset_top = 9.0
-offset_right = 308.0
-offset_bottom = 61.0
-border_color = Color(1, 1, 1, 1)
-border_width = 3.0
-editor_only = false
-
-[node name="P2ItemBox" type="ReferenceRect" parent="."]
-offset_left = 764.0
-offset_top = 9.0
-offset_right = 816.0
+offset_right = 398.0
 offset_bottom = 61.0
 border_color = Color(1, 1, 1, 1)
 border_width = 3.0
@@ -102,27 +242,81 @@ editor_only = false
 
 [node name="P1ShieldCapsule" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(279, 36)
+position = Vector2(369, 36)
 scale = Vector2(3, 3)
-texture = ExtResource("4_0kf57")
-
-[node name="P2ShieldCapsule" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(787, 36)
-scale = Vector2(3.04394, 3.04394)
 texture = ExtResource("4_0kf57")
 
 [node name="P1Beans" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(284, 35)
+position = Vector2(374, 35)
 scale = Vector2(2.9375, 2.9375)
 texture = ExtResource("5_g3pul")
 
+[node name="P1MysteryBox" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(371, 34)
+scale = Vector2(2.1875, 2.1875)
+sprite_frames = SubResource("SpriteFrames_lcdqs")
+
+[node name="P2ItemBox" type="ReferenceRect" parent="."]
+offset_left = 674.0
+offset_top = 9.0
+offset_right = 726.0
+offset_bottom = 61.0
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="P2ShieldCapsule" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(697, 36)
+scale = Vector2(3.04394, 3.04394)
+texture = ExtResource("4_0kf57")
+
 [node name="P2Beans" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(791.664, 34.6636)
+position = Vector2(701.664, 34.6636)
 scale = Vector2(2.89603, 2.89603)
 texture = ExtResource("5_g3pul")
 
+[node name="P2MysteryBox" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(699, 34)
+scale = Vector2(2.27734, 2.27734)
+sprite_frames = SubResource("SpriteFrames_vkdgj")
+
+[node name="PressLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 493.0
+offset_top = 19.0
+offset_right = 579.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 32
+text = "press"
+
+[node name="LeftButtonLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 422.0
+offset_top = 9.0
+offset_right = 478.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 32
+text = "q ←"
+
+[node name="RightButtonLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 589.0
+offset_top = 9.0
+offset_right = 645.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("1_trgib")
+theme_override_font_sizes/font_size = 32
+text = "→ /
+"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="timeout" from="P1RewardTimer" to="." method="_on_p_1_reward_timer_timeout"]
+[connection signal="timeout" from="P2RewardTimer" to="." method="_on_p_2_reward_timer_timeout"]

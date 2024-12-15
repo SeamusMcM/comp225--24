@@ -5,6 +5,7 @@ extends Node
 @export var shield_scene: PackedScene
 @export var beans_scene: PackedScene
 @export var puddle_scene: PackedScene
+@export var mysterybox_scene: PackedScene
 
 var temp_players = []  # Temporary list to store players
 var time
@@ -197,10 +198,10 @@ func _on_food_timer_timeout() -> void:
 	
 	
 	#Check if carrot and obstacle collide
-	if food_spawn_location.position.y >= newestObjects[-1] -15 && food_spawn_location.position.y <= newestObjects[-1] + 100:
-		print("Objects Spawned On Top of Eachother")
-		print("Object y: " + str(newestObjects[-1]))
-		print("Carrot y: " + str(carrot.position.y))
+	#if food_spawn_location.position.y >= newestObjects[-1] -15 && food_spawn_location.position.y <= newestObjects[-1] + 100:
+		#print("Objects Spawned On Top of Eachother")
+		#print("Object y: " + str(newestObjects[-1]))
+		#print("Carrot y: " + str(carrot.position.y))
 	
 	#var velocity = Vector2(150.0, 0.0)
 	var base_velocity = 150
@@ -216,48 +217,52 @@ func game() -> void:
 
 func _on_power_up_timer_timeout() -> void:
 	var r = RandomNumberGenerator.new()
-	var powerupValue = r.randi_range(1, 2)
+	var powerupValue = r.randi_range(1, 9)
 	var powerup
-	if powerupValue == 1:
+	if powerupValue == 1 || powerupValue == 2 || powerupValue == 3:
 		powerup = shield_scene.instantiate()
-	if powerupValue == 2:
+		#powerup = mysterybox_scene.instantiate()
+	if powerupValue == 4 || powerupValue == 5 || powerupValue == 6:
 		powerup = beans_scene.instantiate()
-	var powerup_spawn_location
-	powerup_spawn_location = $ObstaclePath/ObstacleSpawnLocation
-	powerup_spawn_location.progress_ratio = randf()
-	
-	
-	#Attempt at making the powerups not spawn on top of the other objects
-	var rng = RandomNumberGenerator.new()
-	var my_random_number
-	for i in range(10):
-		my_random_number = rng.randf_range(40, 720.0)
-		var goodNumber = true
-		for num in newestObjects:
-			if my_random_number >= num - 15 && my_random_number <= num + 100:
-				goodNumber = false
-		if goodNumber == true:
-			break
-	
-	powerup_spawn_location.position.y = my_random_number
-	
-	
-	var direction = powerup_spawn_location.rotation + PI / 2
-	
-	powerup.position = powerup_spawn_location.position
-	
-	#Check if powerup and obstacle collide
-	if powerup_spawn_location.position.y >= newestObjects[-1] -15 && powerup_spawn_location.position.y <= newestObjects[-1] + 100:
-		print("Objects Spawned On Top of Eachother")
-		print("Object y: " + str(newestObjects[-1]))
-		print("Powerup y: " + str(powerup.position.y))
-	
-	#var velocity = Vector2(150.0, 0.0)
-	var base_velocity = 150
-	var velocity = Vector2(base_velocity * (1+ (GlobalScript._get_diff() * 0.001)), 0.0)
-	powerup.linear_velocity = velocity.rotated(direction)
-	
-	add_child(powerup)
+	if powerupValue == 9:
+		powerup = mysterybox_scene.instantiate()
+	if powerupValue != 7 && powerupValue != 8:
+		var powerup_spawn_location
+		powerup_spawn_location = $ObstaclePath/ObstacleSpawnLocation
+		powerup_spawn_location.progress_ratio = randf()
+		
+		
+		#Attempt at making the powerups not spawn on top of the other objects
+		var rng = RandomNumberGenerator.new()
+		var my_random_number
+		for i in range(10):
+			my_random_number = rng.randf_range(40, 720.0)
+			var goodNumber = true
+			for num in newestObjects:
+				if my_random_number >= num - 15 && my_random_number <= num + 100:
+					goodNumber = false
+			if goodNumber == true:
+				break
+		
+		powerup_spawn_location.position.y = my_random_number
+		
+		
+		var direction = powerup_spawn_location.rotation + PI / 2
+		
+		powerup.position = powerup_spawn_location.position
+		
+		#Check if powerup and obstacle collide
+		#if powerup_spawn_location.position.y >= newestObjects[-1] -15 && powerup_spawn_location.position.y <= newestObjects[-1] + 100:
+			#print("Objects Spawned On Top of Eachother")
+			#print("Object y: " + str(newestObjects[-1]))
+			#print("Powerup y: " + str(powerup.position.y))
+		
+		#var velocity = Vector2(150.0, 0.0)
+		var base_velocity = 150
+		var velocity = Vector2(base_velocity * (1+ (GlobalScript._get_diff() * 0.001)), 0.0)
+		powerup.linear_velocity = velocity.rotated(direction)
+		
+		add_child(powerup)
 
 func spawn_puddle(x,y):
 	var puddle = puddle_scene.instantiate()

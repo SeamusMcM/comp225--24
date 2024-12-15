@@ -7,6 +7,8 @@ signal game_over
 signal p1_item_got
 signal p2_item_got
 signal puddle_placed
+signal p1_mysterybox_opened
+signal p2_mysterybox_opened
 
 var p1_points
 var p2_points
@@ -92,3 +94,9 @@ func set_p2_item(input):
 
 func place_puddle(x,y):
 	emit_signal("puddle_placed", x, y)
+
+func p1_play_mysterybox_result(reward):
+	emit_signal("p1_mysterybox_opened", reward)
+
+func p2_play_mysterybox_result(reward):
+	emit_signal("p2_mysterybox_opened", reward)

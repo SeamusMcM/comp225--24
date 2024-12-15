@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyq2fywhsn4x5"]
+
+[ext_resource type="Texture2D" uid="uid://bko8k4nfjovkk" path="res://Art/MysteryBox.png" id="1_58aeu"]
+[ext_resource type="Script" path="res://PowerUps/mystery_box.gd" id="1_h7ocv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kh7qp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_58aeu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"pickup",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrea1"]
+
+[node name="MysteryBox" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_h7ocv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_kh7qp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xrea1")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

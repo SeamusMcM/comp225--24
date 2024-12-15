@@ -4,6 +4,7 @@ signal hit
 var animation
 var dampener = 1
 var backwardsModifier = 1
+var mysteryItem = "none"
 
 @export var speed = 400 #player speed (pxl/sec) 
 var screen_size #size of game window
@@ -15,6 +16,7 @@ func _ready() -> void:
 	animation = "default"
 	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.flip_h = true
+	GlobalScript.set_p2_item("none")
 	hide()
 
 
@@ -35,6 +37,8 @@ func _process(delta):
 		use_shield()
 	if Input.is_action_pressed("p2_item") && GlobalScript.get_p2_item() == "beans":
 		use_beans()
+	if Input.is_action_pressed("p2_item") && GlobalScript.get_p2_item() == "mysterybox":
+		use_mysterybox()
 	if velocity.length() > -1:
 		velocity = velocity.normalized() * speed * dampener * backwardsModifier
 		$AnimatedSprite2D.play()
@@ -80,12 +84,18 @@ func _on_body_entered(body: Node2D) -> void:
 		GlobalScript._p2_points_earned(int(100))
 	elif body.get_nombre() == "shield":
 		body.queue_free()
-		GlobalScript.set_p2_item("shield")
+		if GlobalScript.get_p2_item() == "none":
+			GlobalScript.set_p2_item("shield")
 	elif body.get_nombre() == "beans":
 		body.queue_free()
-		GlobalScript.set_p2_item("beans")
+		if GlobalScript.get_p2_item() == "none":
+			GlobalScript.set_p2_item("beans")
 	elif body.get_nombre() == "puddle":
 		dampener = 0.5
+	elif body.get_nombre() == "mysterybox":
+		body.queue_free()
+		if GlobalScript.get_p2_item() == "none":
+			GlobalScript.set_p2_item("mysterybox")
 	else:
 		hide() # Player disappears after being hit.
 		#hit.emit()
@@ -130,3 +140,35 @@ func _on_losing_shield_timer_timeout() -> void:
 func use_beans():
 	GlobalScript.place_puddle(position.x-30, position.y)
 	GlobalScript.set_p2_item("none")
+
+func use_mysterybox():
+	GlobalScript.set_p2_item("mystery_reward")
+	var r = RandomNumberGenerator.new()
+	var mysteryboxValue = r.randi_range(1, 7)
+	if mysteryboxValue == 1:
+		GlobalScript.p2_play_mysterybox_result("plus_50")
+		GlobalScript._p2_points_earned(int(50))
+	if mysteryboxValue == 2:
+		GlobalScript.p2_play_mysterybox_result("plus_100")
+		GlobalScript._p2_points_earned(int(100))
+	if mysteryboxValue == 3:
+		GlobalScript.p2_play_mysterybox_result("plus_500")
+		GlobalScript._p2_points_earned(int(500))
+	if mysteryboxValue == 4:
+		GlobalScript.p2_play_mysterybox_result("minus_100")
+		GlobalScript._p2_points_earned(int(-100))
+	if mysteryboxValue == 5:
+		GlobalScript.p2_play_mysterybox_result("minus_500")
+		GlobalScript._p2_points_earned(int(-500))
+	if mysteryboxValue == 6:
+		mysteryItem = "shield"
+		$MysteryItemTimer.start()
+		GlobalScript.p2_play_mysterybox_result("hide")
+	if mysteryboxValue == 7:
+		mysteryItem = "beans"
+		$MysteryItemTimer.start()
+		GlobalScript.p2_play_mysterybox_result("hide")
+
+func _on_mystery_item_timer_timeout() -> void:
+	GlobalScript.set_p2_item(mysteryItem)
+	$MysteryItemTimer.stop()
