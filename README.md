@@ -111,6 +111,7 @@ In **_Barnyard Blitz_**, two players race to collect the most carrots while dodg
 
 ## Known Bugs
 - Esc pause menu is inconsistant in functionality - often causing the need to reload the webpage
+- Horse's hitbox is larger than sheep's
 <!-- Creators -->
 ## Creators
 
