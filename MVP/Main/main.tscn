@@ -62,6 +62,8 @@ wait_time = 7.0
 [node name="ShieldTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="PointTimer" type="Timer" parent="."]
+
 [node name="StartPosition1" type="Marker2D" parent="."]
 position = Vector2(50, 240)
 
@@ -93,13 +95,14 @@ layout_mode = 1
 
 [connection signal="hit" from="Player2" to="." method="p2_game_over"]
 [connection signal="hit" from="Player2" to="." method="_game_over"]
-[connection signal="hit" from="Player3" to="." method="p3_game_over"]
 [connection signal="hit" from="Player3" to="." method="_game_over"]
+[connection signal="hit" from="Player3" to="." method="p3_game_over"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]
 [connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]
+[connection signal="timeout" from="PointTimer" to="." method="_on_point_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="pressed" from="TextureRect/PauseMenu/Panel/VBoxContainer/Resume" to="Manager" method="_on_resume_pressed"]
 [connection signal="pressed" from="TextureRect/PauseMenu/Panel/VBoxContainer/BackToMenu" to="Manager" method="_on_back_to_menu_pressed"]

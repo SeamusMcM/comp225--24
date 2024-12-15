@@ -5,6 +5,7 @@ var animation
 var dampener = 1
 var backwardsModifier = 1
 var mysteryItem = "none"
+var inPuddle
 
 @export var speed = 400 #player speed (pxl/sec) 
 var screen_size #size of game window
@@ -23,6 +24,8 @@ func _process(delta):
 	if Input.is_action_pressed("p1_right"):
 		velocity.x += 1
 		backwardsModifier = 1
+		if inPuddle:
+			dampener = 0.15
 	if Input.is_action_pressed("p1_left"):
 		velocity.x -= 1
 		backwardsModifier = 1.3
@@ -81,6 +84,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if GlobalScript.get_p1_item() == "none":
 			GlobalScript.set_p1_item("beans")
 	elif body.get_nombre() == "puddle":
+		inPuddle = true
 		dampener = 0.5
 	elif body.get_nombre() == "mysterybox":
 		body.queue_free()
@@ -96,6 +100,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.get_nombre() == "puddle":
+		inPuddle = false
 		dampener = 1
 
 

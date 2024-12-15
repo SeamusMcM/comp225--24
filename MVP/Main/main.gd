@@ -67,6 +67,7 @@ func _game_over() -> void:
 	print ("liom")
 	$FoodTimer.stop()
 	$PowerUpTimer.stop()
+	$PointTimer.stop()
 	GlobalScript.set_p1_item("none")
 	GlobalScript.set_p2_item("none")
 	
@@ -149,9 +150,6 @@ func _on_time_timer_timeout() -> void:
 		$TextureRect.material.set_shader_parameter("startTime", Time.get_ticks_msec()/1000)
 		pass
 	$TextureRect.material.set_shader_parameter("newTime", time)
-	if time % 100 == 0:
-		GlobalScript._p1_points_earned(10)
-		GlobalScript._p2_points_earned(10)
 	if time % 1 == 0:
 		GlobalScript._increment_diff(1)
 		var velocity = Vector2(150 * (1 + (GlobalScript._get_diff() * 0.0011)), 0.0)
@@ -168,6 +166,7 @@ func _on_start_timer_timeout() -> void:
 	$TimeTimer.start()
 	$FoodTimer.start()
 	$PowerUpTimer.start()
+	$PointTimer.start()
 
 func _on_food_timer_timeout() -> void:
 	var carrot = food_scene.instantiate()
@@ -303,3 +302,10 @@ func spawn_puddle(x,y):
 	puddle.linear_velocity = velocity.rotated(direction)
 	
 	add_child(puddle)
+
+
+func _on_point_timer_timeout() -> void:
+	if GlobalScript.p1_active == true:
+		GlobalScript._p1_points_earned(10)
+	if GlobalScript.p2_active == true:
+		GlobalScript._p2_points_earned(10)
