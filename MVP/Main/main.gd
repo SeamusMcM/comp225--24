@@ -96,7 +96,7 @@ func new_game():
 	time = 0
 	#$HUD.update_score(score)
 	difficulty_level = 1
-	$ObstacleTimer.wait_time = 3.0
+	$ObstacleTimer.wait_time = 0.75
 	GlobalScript._set_p1_points(0)
 	GlobalScript._set_p2_points(0)
 	GlobalScript._p1_points_earned(0)
@@ -146,16 +146,16 @@ func deleteObstacle():
 
 func _on_time_timer_timeout() -> void:
 	time += 1
-	if time == 1:
-		$TextureRect.material.set_shader_parameter("startTime", Time.get_ticks_msec()/1000)
-		pass
-	$TextureRect.material.set_shader_parameter("newTime", time)
-	if time % 1 == 0:
-		GlobalScript._increment_diff(1)
-		var velocity = Vector2(150 * (1 + (GlobalScript._get_diff() * 0.0011)), 0.0)
-		#for i in allObjects:
-			#i.linear_velocisty = velocity.rotated(3.14159269730118)
-		$TextureRect.material.set_shader_parameter("difficulty", GlobalScript._get_diff())
+	#if time == 1:
+		#$TextureRect.material.set_shader_parameter("startTime", Time.get_ticks_msec()/1000)
+		#pass
+	#$TextureRect.material.set_shader_parameter("newTime", time)
+	#if time % 1 == 0:
+		#GlobalScript._increment_diff(1)
+		#var velocity = Vector2(150 * (1 + (GlobalScript._get_diff() * 0.0011)), 0.0)
+		##for i in allObjects:
+			##i.linear_velocisty = velocity.rotated(3.14159269730118)
+		#$TextureRect.material.set_shader_parameter("difficulty", GlobalScript._get_diff())
 
 func adjust_timers() -> void:
 	$ObstacleTimer.wait_time = max(0.5, $ObstacleTimer.wait_time - 0.1 * GlobalScript._get_diff())
